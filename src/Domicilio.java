@@ -1,4 +1,4 @@
-public class Domicilio {
+public class Domicilio{
     /*
     *   -Calle
         -Numero
@@ -6,7 +6,6 @@ public class Domicilio {
         -Ciudad
         -Provincia
         -Pais
-
     * */
 
     private String calle;
