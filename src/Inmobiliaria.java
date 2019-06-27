@@ -14,15 +14,10 @@ import java.util.List;
 public class Inmobiliaria{
     private List<Inmueble> inmuebles;
     private List<Cliente> clientes;
+    private List<Operacion> operaciones; 
+  
 
-    public Inmobiliaria(List<Inmueble> inmuebles, List<Cliente> clientes) {
-        this.inmuebles = inmuebles;
-        this.clientes = clientes;
-    }
-
-    public Inmobiliaria() {
-        this.inmuebles=(List<Inmueble>) new MyCollection<Inmueble>();
-        this.clientes=(List<Cliente>) new MyCollection<Cliente>();
+    public Inmobiliaria() {       
     }
 
     public List<Inmueble> getInmuebles() {

@@ -37,5 +37,10 @@ public class MyCollection <T extends IIdentificables> {
             }
             cont++;
         }
-    } 
+    }
+    public void Listar(){
+        for(T o:list){
+            System.out.println(o);
+        }
+    }
 }
