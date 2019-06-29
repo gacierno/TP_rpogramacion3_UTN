@@ -1,5 +1,8 @@
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,62 +14,64 @@ import java.util.List;
  *
  * @author asd
  */
-public class Alquiler extends Operacion{
+public class Alquiler extends Operacion implements IIdentificables{
     private int id;
     private int contId;
-    private List<Locador> locadores;
-    private List<Locatario> locatarios;
-    private List<Garante> garantes;
-    private List<Cuota> cuotas;
+    private MyCollection<Locador> locadores;
+    private MyCollection<Locatario> locatarios;
+    private MyCollection<Garante> garantes;
+    private MyCollection<Cuota> cuotas;
     private int tipoAumento;//12-Anual 6-Semestral
     private int porcentajeAumento;
     private int duracion;
-    private String fechaInicio;
+    private LocalDate fechaInicio;
     private double valorInicial;
 
-    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, String fechaInicio, double valorInicial, Inmueble inmueble, String fecha) {
+    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble, String fecha) {
         super(inmueble, fecha);
         this.id=contId++;
         this.tipoAumento = tipoAumento;
         this.porcentajeAumento = porcentajeAumento;
         this.duracion = duracion;
-        this.fechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;/// Se puede crear un LocalDate.now() para que se cree automaticamente, pero a modo de practica se va a utilizar datos ficticios
         this.valorInicial = valorInicial;
-        this.cuotas=establecerCuotas();
+        this.cuotas=new MyCollection();
+        this.establecerCuotas();
+        this.locatarios=new MyCollection();
     }
 
   
 
 
-    public List<Locador> getLocadores() {
+    public MyCollection<Locador> getLocadores() {
         return locadores;
     }
 
-    public void setLocadores(List<Locador> locadores) {
+    public void setLocadores(MyCollection<Locador> locadores) {
         this.locadores = locadores;
     }
 
-    public List<Locatario> getLocatarios() {
+    public MyCollection<Locatario> getLocatarios() {
         return locatarios;
     }
 
-    public void setLocatarios(List<Locatario> locatarios) {
+    public void setLocatarios(MyCollection<Locatario> locatarios) {
         this.locatarios = locatarios;
     }
 
-    public List<Garante> getGarantes() {
+    public MyCollection<Garante> getGarantes() {
         return garantes;
     }
 
-    public void setGarantes(List<Garante> garantes) {
+    public void setGarantes(MyCollection<Garante> garantes) {
         this.garantes = garantes;
     }
 
-    public List<Cuota> getCuotas() {
+    public MyCollection<Cuota> getCuotas() {
         return cuotas;
     }
 
-    public void setCuotas(List<Cuota> cuotas) {
+    public void setCuotas(MyCollection<Cuota> cuotas) {
         this.cuotas = cuotas;
     }
 
@@ -94,11 +99,11 @@ public class Alquiler extends Operacion{
         this.duracion = duracion;
     }
 
-    public String getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -110,14 +115,78 @@ public class Alquiler extends Operacion{
         this.valorInicial = valorInicial;
     }
 
-    public List<Cuota> establecerCuotas(){
+    //Crea las cuotas y establece el valor segun el aumento estipulado
+    public void establecerCuotas(){
         int cont;
-        double valorInicial=this.getValorInicial();
-        for(cont=0;cont<=this.duracion;cont++){
-            this.cuotas.add(new Cuota(cont,(int)(cont/this.getTipoAumento())*valorInicial));
+        double _valorInicial=this.getValorInicial();
+        for(cont=1;cont<=this.duracion;cont++){
+            cuotas.alta(new Cuota(cont,((cont/this.getTipoAumento())+1)*_valorInicial));
         }
-        return this.cuotas;
     } 
+    
+    public void agregarLocador(Locador locador){
+        locadores.alta(locador);
+    }
+    public void agregarLocatario(Locatario locatario){
+        locatarios.alta(locatario);
+    }
+     public void agregarGarante(Garante garante){
+        garantes.alta(garante);
+    }
+     public void quitarLocador(int id){
+        locadores.baja(id);
+    }
+    public void quitarLocatario(int id){
+        locatarios.baja(id);
+    }
+     public void quitarGarante(int id){
+        garantes.baja(id);
+    }
+    public void listarCuotas(){              
+            cuotas.listar();       
+    }
+    ///obtiene la cuota que corresponde este mes.
+    ///en caso de quere pagar una cuota que no es la actual, hay que modificar el atributo pagado desde el metodo modificarCuota.
+    public boolean pagarCuota(){      
+      int numeroCuota=ObtenerNumCuota();      
+       boolean check=false;
+       for(Cuota c:cuotas.list){
+           if(c.getNumero()==numeroCuota){
+               if(!c.isPagado()){
+                   c.Pagar();
+               }
+               else{
+                   System.out.println("asd");
+               }
+               check=true;
+           }
+       }
+       return check;
+    }
+    ///Hace la diferencia entre la fecha actual y la fecha de inicio para saber la cuota que corresponde este mes. 
+    public int ObtenerNumCuota(){
+        return 1+(fechaInicio.getMonthValue()-LocalDate.now().getMonthValue())+((LocalDate.now().getYear()-fechaInicio.getYear())*12);
+    }
+    ///Si vamos a usar interfaz grafica quiza esto se podria armar de otro modo, lo djeo pendiente...
+    
+    /*public void ModificarCuota(int id){
+        Scanner sc=new Scanner(System.in);
+        Cuota cuota=cuotas.buscarPorId(id);
+        if(cuota!=null){            
+            System.out.println("Que desdea modificar de la cuota?/n1-Valor\n2-");
+        }
+    }*/
+
+    @Override
+    public String toString() {
+        return "Alquiler{" + "id=" + id + ", locadores=" + locadores + ", locatarios=" + locatarios + ", garantes=" + garantes + ", duracion=" + duracion + ", fechaInicio=" + fechaInicio + ", valorInicial=" + valorInicial + '}';
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+    
     
     
 }

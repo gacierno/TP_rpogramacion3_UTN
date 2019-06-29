@@ -8,7 +8,7 @@
  *
  * @author asd
  */
-public class Operacion {
+public abstract class Operacion implements IIdentificables{
     private Inmueble inmueble;
     private String fecha;
 
@@ -32,6 +32,9 @@ public class Operacion {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public abstract int getId() ;
 
     
 }

@@ -16,6 +16,7 @@ public class Inmueble implements IIdentificables{
     private String descripcion;
     private NomenclaturaCatastral nomCatastral;
 
+    public Inmueble(){}
     public Inmueble(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         this.contId++;
         this.id = id;

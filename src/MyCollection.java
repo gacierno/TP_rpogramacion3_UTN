@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author usuario
  */
-public class MyCollection <T extends IIdentificables> {
+public class MyCollection<T extends IIdentificables>{
     List<T> list;
 
     public MyCollection(List<T> list) {
@@ -19,28 +20,39 @@ public class MyCollection <T extends IIdentificables> {
     }
 
     public MyCollection() {
+        this.list=new ArrayList<T>();
     }
-
-    
-    
     
      public void alta(T object){
-        if(!list.contains(object)){
+        if(buscarPorId(object.getId())==null){
             list.add(object);
         }
     }
     public void baja(int id){
-        int cont=0;
-        for(T o:list){
-            if(o.getId()==id){
-                list.remove(cont);
-            }
-            cont++;
+        try{
+        list.remove(buscarPorId(id));
+        }catch(Exception e){
+            throw e;
         }
     }
-    public void Listar(){
+    public void listar(){
         for(T o:list){
             System.out.println(o);
         }
     }
+    public T buscarPorId(int id){
+        T result=null;
+        for(T l:list){
+            if(l.getId()==id){
+                result=l;
+            }
+        }
+        return result;
+    }
+    public void modificar(T Object, int id){
+        if(buscarPorId(id)!=null){
+            list.set(id, Object);
+        }
+    }
+
 }

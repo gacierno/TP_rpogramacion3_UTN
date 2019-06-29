@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author asd
  */
-public class Cuota {
+public class Cuota implements IIdentificables{
     private int id;
     private static int contId;
     private int numero;
@@ -65,5 +65,17 @@ public class Cuota {
         this.pagado=true;
     }
     ///faltaria modificar observacion
+
+    @Override
+    public String toString() {
+        return "Cuota{" + "id=" + id + ", numero=" + numero + ", valor=" + valor + ", pagado=" + pagado + ", observaciones=" + observaciones + '}';
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+    
+    
     
 }
