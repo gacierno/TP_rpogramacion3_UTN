@@ -1,4 +1,4 @@
-public class Domicilio {
+public class Domicilio{
     /*
     *   -Calle
         -Numero
@@ -6,7 +6,6 @@ public class Domicilio {
         -Ciudad
         -Provincia
         -Pais
-
     * */
 
     private String calle;
@@ -36,10 +35,9 @@ public class Domicilio {
         this.setProvincia("");
     }
 
-    public Domicilio(String calle, int numero, String piso, String departamento, int codigoPostal, String ciudad, String provincia, String pais) {
+    public Domicilio(String calle, int numero,String departamento, int codigoPostal, String ciudad, String provincia, String pais) {
         this.setCalle(calle);
         this.setNumero(numero);
-        this.setPais(piso);
         this.setDepartamento(departamento);
         this.setCodigoPostal(codigoPostal);
         this.setCiudad(ciudad);
