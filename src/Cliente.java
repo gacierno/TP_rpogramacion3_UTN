@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tp.pkgfinal;
-
-/**
- *
- * @author usuario
- */
 public class Cliente {
     private String sexo;
     private String dni;
@@ -19,13 +8,13 @@ public class Cliente {
     private String observacion;
 
     public Cliente(String sexo, String dni, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
-        this.sexo = sexo;
-        this.dni = dni;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
-        this.email = email;
-        this.observacion = observacion;
+        this.setSexo(sexo);
+        this.setDni( dni );
+        this.setApellido( apellido );
+        this.setDomicilio( domicilio );
+        this.setTelefono( telefono );
+        this.setEmail( email );
+        this.setObservacion( observacion );
     }
 
     public String getSexo() {
