@@ -1,4 +1,6 @@
-public class Cliente {
+public class Cliente implements IIdentificables {
+    static private int lastId = 0;
+    private int id;
     private String sexo;
     private String dni;
     private String apellido;
@@ -15,6 +17,12 @@ public class Cliente {
         this.setTelefono( telefono );
         this.setEmail( email );
         this.setObservacion( observacion );
+    }
+
+    //  setters
+    private void setId(){
+        lastId ++;
+        this.id = lastId;
     }
 
     public String getSexo() {
@@ -74,6 +82,10 @@ public class Cliente {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
+
+    //getters
+
+    public int getId(){ return this.id; }
 
     @Override
     public String toString() {
