@@ -10,6 +10,10 @@
  */
 public class PH extends Inmueble{
 
+    public PH() {
+    }
+
+    
     public PH(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         super(domicilio, descripcion, nomCatastral);
     }

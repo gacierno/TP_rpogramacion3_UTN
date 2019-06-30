@@ -10,11 +10,9 @@
  */
 public abstract class Operacion implements IIdentificables{
     private Inmueble inmueble;
-    private String fecha;
 
-    public Operacion(Inmueble inmueble, String fecha) {
+    public Operacion(Inmueble inmueble) {
         this.inmueble = inmueble;
-        this.fecha = fecha;
     }
 
     public Inmueble getInmueble() {
@@ -25,13 +23,7 @@ public abstract class Operacion implements IIdentificables{
         this.inmueble = inmueble;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+ 
 
     @Override
     public abstract int getId() ;

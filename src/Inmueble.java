@@ -9,7 +9,7 @@
  *
  * @author usuario
  */
-public class Inmueble implements IIdentificables{
+public abstract class Inmueble implements IIdentificables{
     private int id;
     private static int contId;
     private Domicilio domicilio;

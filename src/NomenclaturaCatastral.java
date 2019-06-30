@@ -15,6 +15,8 @@ public class NomenclaturaCatastral {
     private String manzana;
     private int parcela;
 
+    public NomenclaturaCatastral(){}
+    
     public NomenclaturaCatastral(int circunscripcion, char seccion, String manzana, int parcela) {
         this.circunscripcion = circunscripcion;
         this.seccion = seccion;

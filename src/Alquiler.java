@@ -27,8 +27,8 @@ public class Alquiler extends Operacion implements IIdentificables{
     private LocalDate fechaInicio;
     private double valorInicial;
 
-    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble, String fecha) {
-        super(inmueble, fecha);
+    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble) {
+        super(inmueble);
         this.id=contId++;
         this.tipoAumento = tipoAumento;
         this.porcentajeAumento = porcentajeAumento;
