@@ -1,4 +1,6 @@
-public class Domicilio{
+import java.io.Serializable;
+
+public class Domicilio implements Serializable {
     /*
     *   -Calle
         -Numero

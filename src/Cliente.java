@@ -1,4 +1,6 @@
-public class Cliente implements IIdentificables {
+import java.io.Serializable;
+
+public class Cliente implements IIdentificables, Serializable {
     static private int lastId = 0;
     private int id;
     private String sexo;
