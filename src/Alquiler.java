@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Scanner;
  *
  * @author asd
  */
-public class Alquiler extends Operacion implements IIdentificables{
+public class Alquiler extends Operacion implements IIdentificables, Serializable {
     private int id;
     private int contId;
     private MyCollection<Locador> locadores;
@@ -116,7 +117,7 @@ public class Alquiler extends Operacion implements IIdentificables{
     }
 
     //Crea las cuotas y establece el valor segun el aumento estipulado
-    public void establecerCuotas(){
+    private void establecerCuotas(){
         int cont;
         double _valorInicial=this.getValorInicial();
         for(cont=1;cont<=this.duracion;cont++){

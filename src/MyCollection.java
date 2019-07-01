@@ -23,11 +23,12 @@ public class MyCollection<T extends IIdentificables>{
         this.list=new ArrayList<T>();
     }
     
-     public void alta(T object){
-        if(buscarPorId(object.getId())==null){
+    public void alta(T object){
+      //  if(buscarPorId(object.getId())==null){
             list.add(object);
-        }
+      //  }
     }
+
     public void baja(int id){
         try{
         list.remove(buscarPorId(id));
@@ -41,7 +42,7 @@ public class MyCollection<T extends IIdentificables>{
           throw new NullPointerException("La lista esta vacia");
         
         for(T o:list){
-             System.out.println(o);
+             System.out.println(o.getId()+"- "+o);
         }           
         }catch (NullPointerException e){
             throw e;
@@ -49,19 +50,30 @@ public class MyCollection<T extends IIdentificables>{
             throw new Exception("Hubo un inconveniente con la lista");
         }
     }
+
     public T buscarPorId(int id){
-        T result=null;
-        for(T l:list){
-            if(l.getId()==id){
+        T result = null;
+
+        for( T l : list ){
+            if( l.getId()==id ){
                 result=l;
             }
         }
         return result;
     }
+
     public void modificar(T Object, int id){
         if(buscarPorId(id)!=null){
             list.set(id, Object);
         }
+    }
+
+    public int size(){
+        return list.size();
+    }
+
+    public T get( int i ){
+        return list.get(i);
     }
 
 }

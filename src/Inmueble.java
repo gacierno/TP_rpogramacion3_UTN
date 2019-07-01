@@ -5,33 +5,33 @@
  */
 
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public abstract class Inmueble implements IIdentificables{
+public abstract class Inmueble implements IIdentificables, Serializable {
+   static private int lastId = 0;
     private int id;
-    private static int contId=1;
     private Domicilio domicilio;
     private String descripcion;
     private NomenclaturaCatastral nomCatastral;
 
-    public Inmueble(){}
-    public Inmueble(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
-        this.contId++;
-        this.id = id;
+    public Inmueble(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {      
+         this.setId();
         this.domicilio = domicilio;
         this.descripcion = descripcion;
         this.nomCatastral = nomCatastral;
     }
-
+   
+      private void setId(){
+        lastId ++;
+        this.id = lastId;
+    }
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    }   
 
     public Domicilio getDomicilio() {
         return domicilio;
@@ -56,5 +56,11 @@ public abstract class Inmueble implements IIdentificables{
     public void setNomCatastral(NomenclaturaCatastral nomCatastral) {
         this.nomCatastral = nomCatastral;
     }
+
+    @Override
+    public String toString() {
+        return  ", domicilio=" + domicilio + ", descripcion=" + descripcion + ", nomCatastral=" + nomCatastral;
+    }
+    
     
 }

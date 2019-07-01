@@ -1,4 +1,6 @@
-public class Domicilio{
+import java.io.Serializable;
+
+public class Domicilio implements Serializable {
     /*
     *   -Calle
         -Numero
@@ -131,7 +133,7 @@ public class Domicilio{
     @Override
     public String toString() {
         String output = String.format(
-                "Domicilio : {\n\tCale : %s,\n\tNumero : %d\n}",
+                "Domicilio : Calle = %s,Numero = %d",
                 this.getCalle(), this.getNumero()
         );
         return output;

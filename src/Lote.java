@@ -16,7 +16,7 @@ public class Lote extends Inmueble{
 
     @Override
     public String toString() {
-        return super.toString()+"Lote{" + '}';
+        return "Lote" + super.toString();
     }
     
 }

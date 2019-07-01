@@ -1,17 +1,22 @@
-public class Cliente implements IIdentificables {
-    static private int lastId = 1;
+import java.io.Serializable;
+
+public class Cliente implements IIdentificables, Serializable {
+    static private int lastId = 0;
     private int id;
     private String sexo;
     private String dni;
+    private String nombre;
     private String apellido;
     private Domicilio domicilio;
     private String telefono;
     private String email;
     private String observacion;
 
-    public Cliente(String sexo, String dni, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
+    public Cliente(String sexo, String dni,String nombre, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
+        this.setId();
         this.setSexo(sexo);
         this.setDni( dni );
+        this.setNombre(nombre);
         this.setApellido( apellido );
         this.setDomicilio( domicilio );
         this.setTelefono( telefono );
@@ -36,6 +41,15 @@ public class Cliente implements IIdentificables {
     public String getDni() {
         return dni;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 
     public void setDni(String dni) {
         this.dni = dni;
@@ -89,7 +103,7 @@ public class Cliente implements IIdentificables {
 
     @Override
     public String toString() {
-        return "Cliente{" + "sexo=" + sexo + ", dni=" + dni + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", email=" + email + ", observacion=" + observacion + '}';
+        return "sexo=" + sexo + ", dni=" + dni + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", email=" + email + ", observacion=" + observacion;
     }
     
     
