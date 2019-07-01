@@ -5,11 +5,13 @@
  */
 
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public abstract class Inmueble implements IIdentificables{
+public abstract class Inmueble implements IIdentificables, Serializable {
     private int id;
     private static int contId=1;
     private Domicilio domicilio;

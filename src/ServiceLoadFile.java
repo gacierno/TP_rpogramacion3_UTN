@@ -2,15 +2,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceLoadFile<T> {
+public class ServiceLoadFile<T extends IIdentificables >{
 
-    private List<T> data;
+    private MyCollection<T> data;
 
     /*
     *   CONSTRUCTOR
     * */
-    public void ServiceLoadFile( String fileName ){
-        this.data = new ArrayList<T>();
+    public ServiceLoadFile( String fileName ){
+        this.data = new MyCollection<T>();
 
         try {
             this.data = this.setData( fileName );
@@ -23,7 +23,7 @@ public class ServiceLoadFile<T> {
     /*
     *   getter
     * */
-    public List<T> getData(){
+    public MyCollection<T> getData(){
         return this.data;
     }
 
@@ -31,9 +31,9 @@ public class ServiceLoadFile<T> {
     *   setter
     * */
     // load from a file
-    private ArrayList<T> setData( String fileName ) throws Exception {
+    private MyCollection<T> setData( String fileName ) throws Exception {
 
-        ArrayList<T> dataOut = new ArrayList<T>();
+        MyCollection<T> dataOut = new MyCollection<T>();
 
         if( fileName != null && !fileName.isEmpty() ){
             FileInputStream fis = null;
@@ -45,7 +45,7 @@ public class ServiceLoadFile<T> {
 
                 do {
                     item = (T)oi.readObject();
-                    dataOut.add( item );
+                    dataOut.alta( item );
                 }while( item != null);
 
                 oi.close();
