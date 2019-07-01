@@ -143,8 +143,12 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
      public void quitarGarante(int id){
         garantes.baja(id);
     }
-    public void listarCuotas(){              
+    public void listarCuotas() throws Exception{ 
+        try{
             cuotas.listar();       
+        }catch (Exception e){
+            throw e;
+        }
     }
     ///obtiene la cuota que corresponde este mes.
     ///en caso de quere pagar una cuota que no es la actual, hay que modificar el atributo pagado desde el metodo modificarCuota.

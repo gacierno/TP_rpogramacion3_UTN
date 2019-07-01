@@ -35,9 +35,18 @@ public class MyCollection<T extends IIdentificables>{
             throw e;
         }
     }
-    public void listar(){
+    public void listar() throws Exception{
+        try{
+        if(list.isEmpty())            
+          throw new NullPointerException("La lista esta vacia");
+        
         for(T o:list){
-            System.out.println(o);
+             System.out.println(o);
+        }           
+        }catch (NullPointerException e){
+            throw e;
+        } catch (Exception e){
+            throw new Exception("Hubo un inconveniente con la lista");
         }
     }
     public T buscarPorId(int id){
