@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceLoadFiles <T> {
+public class ServiceLoadFile<T> {
 
     private List<T> data;
 
     /*
     *   CONSTRUCTOR
     * */
-    public void ServiceLoadFiles( String fileName ){
+    public void ServiceLoadFile( String fileName ){
         this.data = new ArrayList<T>();
 
         try {
