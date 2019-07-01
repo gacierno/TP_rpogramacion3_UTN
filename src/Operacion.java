@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 
+import java.io.Serializable;
+
 /**
  *
  * @author asd
  */
-public abstract class Operacion implements IIdentificables{
+public abstract class Operacion implements IIdentificables, Serializable {
     private Inmueble inmueble;
 
     public Operacion(Inmueble inmueble) {

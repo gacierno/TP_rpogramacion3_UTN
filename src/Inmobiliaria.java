@@ -47,13 +47,13 @@ public class Inmobiliaria{
     *   GETTERS
     * */
     public MyCollection<Inmueble> getInmuebles() {
-        return inmuebles;
+        return this.inmuebles;
     }
     public MyCollection<Cliente> getClientes() {
         return clientes;
     }
     public MyCollection<Operacion> getOperaciones() {
-        return operaciones;
+        return this.operaciones;
     }
 
     /*

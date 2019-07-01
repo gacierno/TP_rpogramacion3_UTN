@@ -5,11 +5,13 @@
  */
 
 
+import java.io.Serializable;
+
 /**
  *
  * @author usuario
  */
-public class NomenclaturaCatastral {
+public class NomenclaturaCatastral implements Serializable {
     private int circunscripcion;
     private char seccion;
     private String manzana;

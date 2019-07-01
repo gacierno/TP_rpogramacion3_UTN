@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author usuario
  */
-public class MyCollection<T extends IIdentificables>{
+public class MyCollection<T extends IIdentificables> implements Serializable {
     List<T> list;
 
     public MyCollection(List<T> list) {

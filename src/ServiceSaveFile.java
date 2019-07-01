@@ -34,6 +34,9 @@ public class ServiceSaveFile<T extends IIdentificables>{
                     objectOutputStream.writeObject( data.get(i) );
                 }
             }
+            catch ( NullPointerException e){
+                throw new NullPointerException("puntero nulo");
+            }
             catch (IOException e){
                 throw new IOException("Error al intentar escribir en el archivo.");
             }

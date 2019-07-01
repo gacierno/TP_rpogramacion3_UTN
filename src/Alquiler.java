@@ -1,9 +1,4 @@
-
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +10,7 @@ import java.util.Scanner;
  *
  * @author asd
  */
-public class Alquiler extends Operacion implements IIdentificables, Serializable {
+public class Alquiler extends Operacion implements IIdentificables {
     private int id;
     private int contId;
     private MyCollection<Locador> locadores;
@@ -125,7 +120,7 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
         for(cont=1;cont<=this.duracion;cont++){
             cuotas.alta(new Cuota(cont,((cont/this.getTipoAumento())+1)*_valorInicial));
         }
-    } 
+    }
     
     public void agregarLocador(Locador locador){
         locadores.alta(locador);
@@ -145,17 +140,17 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
      public void quitarGarante(int id){
         garantes.baja(id);
     }
-    public void listarCuotas() throws Exception{ 
+    public void listarCuotas() throws Exception{
         try{
-            cuotas.listar();       
+            cuotas.listar();
         }catch (Exception e){
             throw e;
         }
     }
     ///obtiene la cuota que corresponde este mes.
     ///en caso de quere pagar una cuota que no es la actual, hay que modificar el atributo pagado desde el metodo modificarCuota.
-    public boolean pagarCuota(){      
-      int numeroCuota=ObtenerNumCuota();      
+    public boolean pagarCuota(){
+      int numeroCuota=ObtenerNumCuota();
        boolean check=false;
        for(Cuota c:cuotas.list){
            if(c.getNumero()==numeroCuota){
@@ -170,7 +165,7 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
        }
        return check;
     }
-    public boolean pagarCuotaByNum(int num){   
+    public boolean pagarCuotaByNum(int num){
       boolean check=false;
        for(Cuota c:cuotas.list){
            if(c.getNumero()==num){

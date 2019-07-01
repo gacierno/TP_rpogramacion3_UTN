@@ -213,7 +213,8 @@ public class OperacionesInmobiliarias {
         }
 
           try{
-              ServiceSaveFile<Operacion> saveOperacion = new ServiceSaveFile<Operacion>( "operaciones.dat", this.inmobiliaria.getOperaciones() );
+              System.out.println(this.inmobiliaria.getOperaciones());
+              ServiceSaveFile<Operacion> saveOperacion = new ServiceSaveFile<>( "operaciones.dat", this.inmobiliaria.getOperaciones() );
           }catch ( Exception e ){
               throw e;
           }

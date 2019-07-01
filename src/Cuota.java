@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.List;
 
 /*
@@ -11,16 +12,16 @@ import java.util.List;
  *
  * @author asd
  */
-public class Cuota implements IIdentificables{
+public class Cuota implements IIdentificables, Serializable {
     private int id;
-    private static int contId;
+    private static int contId = 0;
     private int numero;
     private double valor;
     private boolean pagado;
     private List<String> observaciones;
 
     public Cuota(int numero, double valor) {
-        this.id=this.contId++;
+        this.setId();
         this.numero = numero;
         this.valor = valor;
         this.pagado = false;
@@ -44,6 +45,11 @@ public class Cuota implements IIdentificables{
 
     public boolean isPagado() {
         return pagado;
+    }
+
+    public void setId(){
+        contId ++;
+        this.id = contId;
     }
 
     public void setPagado(boolean pagado) {
