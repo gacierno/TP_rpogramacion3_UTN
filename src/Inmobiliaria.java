@@ -51,6 +51,10 @@ public class Inmobiliaria{
     public MyCollection<Cliente> getClientes() {
         return clientes;
     }
+    public MyCollection<Operacion> getOperaciones() {
+        return operaciones;
+    }
+
     /*
     *   SETTERS
     * */
