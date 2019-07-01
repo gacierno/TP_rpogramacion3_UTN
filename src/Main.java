@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {       
-        
+        /*
         Domicilio domicilio = new Domicilio();
 
         Locador locador1 = new Locador("Masculino","39256994","Pafundi",domicilio, "2234218309","asd@gmail.com","");
@@ -23,6 +23,11 @@ public class Main {
         alquiler1.listarCuotas();
         alquiler1.pagarCuota();
         alquiler1.listarCuotas();
+        */
+        
+        OperacionesInmobiliarias op=new OperacionesInmobiliarias();
+        op.MenuPrincipal();
+        
         
 
     }

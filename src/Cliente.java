@@ -1,5 +1,5 @@
 public class Cliente implements IIdentificables {
-    static private int lastId = 0;
+    static private int lastId = 1;
     private int id;
     private String sexo;
     private String dni;

@@ -11,7 +11,7 @@
  */
 public abstract class Inmueble implements IIdentificables{
     private int id;
-    private static int contId;
+    private static int contId=1;
     private Domicilio domicilio;
     private String descripcion;
     private NomenclaturaCatastral nomCatastral;

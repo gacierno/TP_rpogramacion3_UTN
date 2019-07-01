@@ -19,7 +19,10 @@ public class Inmobiliaria{
     private MyCollection<Operacion> operaciones; 
   
 
-    public Inmobiliaria() {       
+    public Inmobiliaria() {   
+        inmuebles=new MyCollection();
+        clientes=new MyCollection();
+        operaciones=new MyCollection();
     }
 
     public MyCollection<Inmueble> getInmuebles() {
@@ -50,6 +53,7 @@ public class Inmobiliaria{
         Domicilio domicilio= this.AgregarDomicilio();
         System.out.println("Descripcion:");
         String descripcion=sc.nextLine();
+        sc.nextLine();
         NomenclaturaCatastral nomCatastral= this.AgregarNomenclaturaCatastral();
         
         Inmueble inmueble = null;
@@ -69,6 +73,7 @@ public class Inmobiliaria{
             case 5:
                 System.out.println("Cochera:");
                 String cochera=sc.nextLine();
+                sc.nextLine();
                  inmueble= new Departamento(cochera,domicilio, descripcion, nomCatastral);
                 break;              
             default:
@@ -77,34 +82,41 @@ public class Inmobiliaria{
         if(inmueble!=null)
         inmuebles.alta(inmueble);
     }
-    public Domicilio AgregarDomicilio(){
+    private Domicilio AgregarDomicilio(){
         Scanner sc= new Scanner(System.in);
         
         System.out.println("Calle: ");
         String calle=sc.nextLine();
+        sc.nextLine();
         System.out.println("Numero:");
         int numero=sc.nextInt();
         System.out.println("Departamento:");
         String departamento= sc.nextLine();
+        sc.nextLine();
         System.out.println("Codigo postal:");
         int codPostal=sc.nextInt();
         System.out.println("Ciudad");
         String ciudad=sc.nextLine();
+        sc.nextLine();
         System.out.println("Provincia:");
         String provincia=sc.nextLine();
+        sc.nextLine();
         System.out.println("Pais:");
         String pais=sc.nextLine();
+        sc.nextLine();
         
         return new Domicilio(calle,numero,departamento,codPostal,ciudad,provincia,pais);
     }
-    public NomenclaturaCatastral AgregarNomenclaturaCatastral(){
+    private NomenclaturaCatastral AgregarNomenclaturaCatastral(){        
         Scanner sc= new Scanner(System.in);
         System.out.println("Circunscripcion:");
         int circunscripcion=sc.nextInt();
         System.out.println("Seccion:");
         char seccion=sc.nextLine().charAt(0);
+        sc.nextLine();
         System.out.println("Manzana");
         String manzana=sc.nextLine();
+        sc.nextLine();
         System.out.println("Parcela");
         int parcela=sc.nextInt();
        
@@ -116,17 +128,21 @@ public class Inmobiliaria{
         int tipo=sc.nextInt();
         System.out.println("Sexo:");
         String sexo=sc.nextLine();
+        sc.nextLine();
         System.out.println("DNI:");
         String dni=sc.nextLine();
         System.out.println("Apellido");
-        String apellido=sc.nextLine();        
+        String apellido=sc.nextLine();    
         Domicilio domicilio= this.AgregarDomicilio();
         System.out.println("Telefono:");
         String telefono=sc.nextLine();
+        sc.nextLine();
         System.out.println("Email:");
         String email=sc.nextLine();
+        sc.nextLine();
         System.out.println("Observacion");
-        String observacion=sc.nextLine();        
+        String observacion=sc.nextLine(); 
+        sc.nextLine();
         
         
         double sueldo;
@@ -152,7 +168,8 @@ public class Inmobiliaria{
         clientes.alta(cliente);
     }
     
-    public void altaOperacion(Operacion operacion){
+    public void altaOperacion() throws Exception{
+        try{
         Scanner sc=new Scanner(System.in);
         System.out.println("Tipo de Aumento (6 o 12 meses):");
         int tipoAumento=sc.nextInt();
@@ -172,40 +189,86 @@ public class Inmobiliaria{
         double valorInicial=sc.nextDouble();
         System.out.println("Seleccionar Inmueble segun Id: ");
         this.listarInmuebles();
-        int id=sc.nextInt();
-        Inmueble inmueble=inmuebles.buscarPorId(id);
+        Inmueble inmueble=this.buscarInmueble();
         
-        operaciones.alta(new Alquiler(tipoAumento,porcentajeAumento,duracion,fechaInicio,valorInicial,inmueble));
+        Alquiler alquiler= new Alquiler(tipoAumento,porcentajeAumento,duracion,fechaInicio,valorInicial,inmueble);
+        
+        
+        
+        System.out.println("Lista de clientes:\n\n");
+        this.listarClientes();
+        
+        System.out.println("Elegir Locador");        
+        Locador locador=(Locador)this.buscarCliente();
+        alquiler.agregarLocador(locador);
+        
+        System.out.println("Elegir Locatario");
+        Locatario locatario=(Locatario)this.buscarCliente();
+        alquiler.agregarLocatario(locatario);
+        
+        System.out.println("Elegir Garante");
+        Garante garante=(Garante)this.buscarCliente();
+        alquiler.agregarGarante(garante);
+        
+        operaciones.alta(alquiler);
+        }catch(NullPointerException e){
+            throw e;
+        }catch(Exception e){
+            throw e;
+        }
     }
-    public void buscarInmueble(int id){
-        inmuebles.buscarPorId(id);
+    public Inmueble buscarInmueble(){
+        return inmuebles.buscarPorId(pedirId());
     }
-    public void buscarCliente(int id){
-        clientes.buscarPorId(id);
+   
+    
+    private int pedirId(){
+        System.out.println("id:");
+        Scanner sc=new Scanner(System.in);
+        int id=sc.nextInt();
+        return id;
     }
-    public void buscarOperacion(int id){
-        operaciones.buscarPorId(id);
+    
+    public Cliente buscarCliente(){
+        
+       return clientes.buscarPorId(pedirId());
     }
-      public void bajaInmueble(int id){
-        inmuebles.baja(id);
+    public Operacion buscarOperacion(){        
+        return operaciones.buscarPorId(pedirId());
     }
-    public void bajaCliente(int id){
-        clientes.baja(id);
+      public void bajaInmueble(){       
+        inmuebles.baja(pedirId());
     }
-    public void bajaOperacion(int id){
-        operaciones.baja(id);
+    public void bajaCliente(){
+        clientes.baja(pedirId());
     }
-    public void listarInmuebles(){
+    public void bajaOperacion(){
+        operaciones.baja(pedirId());
+    }
+    public void listarInmuebles() throws Exception{
+        try{
         inmuebles.listar();
+        }catch(Exception e){
+            throw new Exception(e.getMessage().concat(" Inmuebles"));         
+        }
     }
-    public void listarClientes(){
+    public void listarClientes() throws Exception{
+        try{
         clientes.listar();
+        }catch(Exception e){
+          throw new Exception(e.getMessage().concat(" Clientes"));  
+        }
     }
-    public void listarOperaciones(){
+    public void listarOperaciones() throws Exception{
+        try{
         operaciones.listar();
+        }catch(Exception e){
+           throw new Exception(e.getMessage().concat(" Operaciones"));  
+        }
     }
     //Busca los inquilinos que tienen la cuota de este mes impaga y los muestra
-    public void listarMorosos(){
+    public void listarMorosos() throws Exception{
+        try{
         for(Operacion o:operaciones.list){
             if(o instanceof Alquiler){
                 int cuotaDelMes=((Alquiler) o).ObtenerNumCuota();
@@ -213,6 +276,20 @@ public class Inmobiliaria{
                     System.out.println(((Alquiler) o).getLocatarios()); 
                 }
              }
+        }
+        }catch (NullPointerException e){
+             throw new Exception(e.getMessage().concat(" Operaciones"));  
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    
+    public void PagarAlquiler() throws Exception{
+        try{
+            this.listarMorosos();
+            ((Alquiler)operaciones.buscarPorId(pedirId())).pagarCuota();
+        }catch(Exception e){
+            throw e;
         }
     }
     
