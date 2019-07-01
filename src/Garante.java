@@ -1,8 +1,8 @@
 public class Garante extends Cliente{
     private double sueldo;
 
-    public Garante(double sueldo, String sexo, String dni, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
-        super(sexo, dni, apellido, domicilio, telefono, email, observacion);
+    public Garante(double sueldo, String sexo, String dni,String nombre, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
+        super(sexo, dni,nombre, apellido, domicilio, telefono, email, observacion);
         this.sueldo = sueldo;
     }
 
@@ -13,5 +13,12 @@ public class Garante extends Cliente{
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     };
+
+    @Override
+    public String toString() {
+        return "Garante" + "sueldo=" + sueldo +super.toString();
+    }
+    
+    
     
 }

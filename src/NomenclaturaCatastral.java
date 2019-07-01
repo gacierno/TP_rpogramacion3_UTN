@@ -55,6 +55,11 @@ public class NomenclaturaCatastral {
     public void setParcela(int parcela) {
         this.parcela = parcela;
     }
+
+    @Override
+    public String toString() {
+        return "NomenclaturaCatastral{" + "circunscripcion=" + circunscripcion + ", seccion=" + seccion + ", manzana=" + manzana + ", parcela=" + parcela + '}';
+    }
     
    
 }

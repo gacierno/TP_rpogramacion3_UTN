@@ -28,7 +28,7 @@ public class Departamento extends Inmueble{
 
     @Override
     public String toString() {
-        return super.toString()+"Departamento{" + "Cochera=" + Cochera + '}';
+        return "Departamento" + "Cochera=" + Cochera+ super.toString();
     }
     
 }

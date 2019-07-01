@@ -17,7 +17,7 @@ public class Casa extends Inmueble{
 
     @Override
     public String toString() {
-        return super.toString()+"Casa{" + '}';
+        return "Casa"+ super.toString();
     }
 
         

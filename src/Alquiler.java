@@ -39,6 +39,8 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
         this.cuotas=new MyCollection();
         this.establecerCuotas();
         this.locatarios=new MyCollection();
+        this.locadores=new MyCollection();
+        this.garantes=new MyCollection();        
     }
 
   
@@ -117,7 +119,7 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
     }
 
     //Crea las cuotas y establece el valor segun el aumento estipulado
-    public void establecerCuotas(){
+    private void establecerCuotas(){
         int cont;
         double _valorInicial=this.getValorInicial();
         for(cont=1;cont<=this.duracion;cont++){
@@ -161,16 +163,31 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
                    c.Pagar();
                }
                else{
-                   System.out.println("asd");
+                   System.out.println("El mes ya estaba pagado");
                }
                check=true;
            }
        }
        return check;
     }
+    public boolean pagarCuotaByNum(int num){   
+      boolean check=false;
+       for(Cuota c:cuotas.list){
+           if(c.getNumero()==num){
+               if(!c.isPagado()){
+                   c.Pagar();
+               }
+               else{
+                   System.out.println("El mes ya estaba pagado");
+               }
+            check=true;
+           }
+       }
+       return check;
+    }
     ///Hace la diferencia entre la fecha actual y la fecha de inicio para saber la cuota que corresponde este mes. 
     public int ObtenerNumCuota(){
-        return 1+(fechaInicio.getMonthValue()-LocalDate.now().getMonthValue())+((LocalDate.now().getYear()-fechaInicio.getYear())*12);
+        return 1+(LocalDate.now().getMonthValue()-fechaInicio.getMonthValue())+((fechaInicio.getYear()-LocalDate.now().getYear())*12);
     }
     ///Si vamos a usar interfaz grafica quiza esto se podria armar de otro modo, lo djeo pendiente...
     
@@ -184,7 +201,7 @@ public class Alquiler extends Operacion implements IIdentificables, Serializable
 
     @Override
     public String toString() {
-        return "Alquiler{" + "id=" + id + ", locadores=" + locadores + ", locatarios=" + locatarios + ", garantes=" + garantes + ", duracion=" + duracion + ", fechaInicio=" + fechaInicio + ", valorInicial=" + valorInicial + '}';
+        return "Alquiler{" +super.toString()+ "id=" + id + ", locadores=" + locadores + ", locatarios=" + locatarios + ", garantes=" + garantes + ", duracion=" + duracion + ", fechaInicio=" + fechaInicio + ", valorInicial=" + valorInicial + '}';
     }
 
     @Override

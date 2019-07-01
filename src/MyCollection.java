@@ -24,9 +24,9 @@ public class MyCollection<T extends IIdentificables>{
     }
     
     public void alta(T object){
-        if(buscarPorId(object.getId())==null){
+      //  if(buscarPorId(object.getId())==null){
             list.add(object);
-        }
+      //  }
     }
 
     public void baja(int id){
@@ -42,7 +42,7 @@ public class MyCollection<T extends IIdentificables>{
           throw new NullPointerException("La lista esta vacia");
         
         for(T o:list){
-             System.out.println(o);
+             System.out.println(o.getId()+"- "+o);
         }           
         }catch (NullPointerException e){
             throw e;
@@ -74,6 +74,11 @@ public class MyCollection<T extends IIdentificables>{
 
     public T get( int i ){
         return list.get(i);
+    }
+
+    @Override
+    public String toString() {
+        return "list=" + list;
     }
 
 }
