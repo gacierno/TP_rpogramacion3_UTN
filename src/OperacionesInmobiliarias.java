@@ -129,7 +129,7 @@ public class OperacionesInmobiliarias {
         boolean check=false;
         while(check==false){
             System.out.println("Operaciones\n\n");
-            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Operacion\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-PagarAlquiler\n8-Exit");
+            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Operacion\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Exit");
             int opcion=sc.nextInt();
             switch(opcion){
                 case 1:
@@ -153,8 +153,14 @@ public class OperacionesInmobiliarias {
                     System.out.println("FALTA MODIFICAR");
                     break;
                 case 5:
-                    System.out.println(inmobiliaria.buscarOperacion());
-                    break;
+                    try{
+                    Alquiler operacion=(Alquiler)inmobiliaria.buscarOperacion();
+                    System.out.println(operacion);
+                    operacion.listarCuotas();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;                    
                 case 6:
                     try{
                     inmobiliaria.listarMorosos();
@@ -164,12 +170,25 @@ public class OperacionesInmobiliarias {
                     break;
                 case 7:
                     try{
-                    inmobiliaria.PagarAlquiler();
+                    inmobiliaria.PagarAlquilerDelMes();
                     }catch(Exception e){
                         System.out.println(e);
                     }
                     break;
                 case 8:
+                    try{
+                    inmobiliaria.listarOperaciones();
+                    System.out.println("Elija el alquiler que desea pagar");
+                    int id=sc.nextInt();
+                    ((Alquiler)inmobiliaria.getOperaciones().buscarPorId(id)).listarCuotas();
+                    System.out.println("Elija cuota que desea pagar");
+                    int num=sc.nextInt();
+                    inmobiliaria.PagarAlquilerById(id,num);
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case 9:
                     check=true;
                     break;
                 default:

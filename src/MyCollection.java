@@ -76,4 +76,9 @@ public class MyCollection<T extends IIdentificables>{
         return list.get(i);
     }
 
+    @Override
+    public String toString() {
+        return "list=" + list;
+    }
+    
 }

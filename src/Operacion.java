@@ -28,5 +28,10 @@ public abstract class Operacion implements IIdentificables{
     @Override
     public abstract int getId() ;
 
+    @Override
+    public String toString() {
+        return "inmueble=" + inmueble ;
+    }
+
     
 }

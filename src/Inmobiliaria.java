@@ -228,6 +228,7 @@ public class Inmobiliaria{
 
             System.out.println("Elegir Locador");
             Locador locador=(Locador)this.buscarCliente();
+            System.out.println(locador);
             alquiler.agregarLocador(locador);
 
             System.out.println("Elegir Locatario");
@@ -300,8 +301,10 @@ public class Inmobiliaria{
         for(Operacion o:operaciones.list){
             if(o instanceof Alquiler){
                 int cuotaDelMes=((Alquiler) o).ObtenerNumCuota();
+                if(cuotaDelMes>=0&&cuotaDelMes<=((Alquiler) o).getDuracion()){
                 if(!((Alquiler) o).getCuotas().list.get(cuotaDelMes-1).isPagado()){
-                    System.out.println(((Alquiler) o).getLocatarios()); 
+                    System.out.println(o.getId()+"- "+((Alquiler) o).getLocatarios()); 
+                }
                 }
              }
         }
@@ -312,14 +315,24 @@ public class Inmobiliaria{
         }
     }
     
-    public void PagarAlquiler() throws Exception{
+    public void PagarAlquilerDelMes() throws Exception{
         try{
             this.listarMorosos();
-            ((Alquiler)operaciones.buscarPorId(pedirId())).pagarCuota();
+            if(!((Alquiler)operaciones.buscarPorId(pedirId())).pagarCuota()){
+                System.out.println("Error, no corresponde pagar la cuota de este mes. Revise la lista de morosos o elija la opcion pagar alquiler para pagar otras cuotas");
+            }
         }catch(Exception e){
             throw e;
         }
     }
-    
+     public void PagarAlquilerById(int id, int num) throws Exception{
+        try{
+            if(!((Alquiler)operaciones.buscarPorId(id)).pagarCuotaByNum(num)){
+                System.out.println("Error, No se encontro ese numero de cuota en ese alquiler");
+            }
+        }catch(Exception e){
+            throw e;
+        }
+    }
    
 }
