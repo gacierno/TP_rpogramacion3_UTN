@@ -10,8 +10,8 @@ Este es un proyecto en java que permite administrar operaciones inmobiliarias
    
 En este repositorio solo se encuentran los archivos fuente
 
-##MANUAL DE USUARIO   
+## MANUAL DE USUARIO
 https://docs.google.com/document/d/1-NKcaQM7VhyX8m1VAYMDVd1bkRAiQtWp_QY3fJ7Ur6k/edit?usp=sharing
 
-##UML  
+## UML
 https://drive.google.com/file/d/1sjgjsj0ImGpnctjnTj3hzVOScZhXGvOB/view?usp=sharing
