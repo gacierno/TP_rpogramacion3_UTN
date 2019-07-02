@@ -28,6 +28,12 @@ public class Inmobiliaria{
 
         try {
 
+            ServiceLoadFile<Inmueble> _inmuebles = new ServiceLoadFile<>( "inmuebles.dat" );
+            this.inmuebles = _inmuebles.getData();
+            for( int i = 0; i < inmuebles.size(); i++){
+                Inmueble syncIds = new Lote( inmuebles.get(i).getDomicilio(), inmuebles.get(i).getDescripcion(), inmuebles.get(i).getNomCatastral() );
+            }
+
             ServiceLoadFile<Cliente> _clientes = new ServiceLoadFile<>( "clientes.dat" );
             this.clientes = _clientes.getData();
             for( int i = 0; i < clientes.size(); i++){
