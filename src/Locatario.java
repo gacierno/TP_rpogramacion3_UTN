@@ -18,14 +18,7 @@ public Locatario(){
 
     @Override
     public String toString() {
-        String output = String.format(
-                "Locatario : {\n" +
-                        super.toString() + ",\n" +
-                        "\tSueldo :\t%.2f\n" +
-                "}",
-                getSueldo()
-        );
-        return output;
+        return "Locatario" + "sueldo=" + sueldo +super.toString();
     }
     
 }

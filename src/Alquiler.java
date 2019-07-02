@@ -244,7 +244,7 @@ public class Alquiler extends Operacion{
                 sc.nextLine();
                 String pagado=sc.nextLine();
                 if(pagado.equals("si")){
-                cuota.setPagado(true);
+                    cuota.setPagado(true);
                 }else{
                     cuota.setPagado(false);
                 }

@@ -24,35 +24,67 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
         this.list=new ArrayList<T>();
     }
     
-    public void alta(T object){
-      //  if(buscarPorId(object.getId())==null){
+    public void alta(T object){  
+        try{      
+        if(buscarPorId(object.getId())==null){
             list.add(object);
-      //  }
+        }
+        }catch(Exception e){
+            throw e;
+        }
     }
 
     public void baja(int id){
         try{
-        list.remove(buscarPorId(id));
+        buscarPorId(id).setActivo(false);
         }catch(Exception e){
             throw e;
         }
     }
     public void listar() throws Exception{
         try{
-            if(list.isEmpty()) throw new NullPointerException("La lista esta vacia");
-
-            String output = "";
-            for( T obj : list ){
-                output += "==========================================================================================================================\n";
-                output += obj + "\n";
+        if(list.isEmpty())            
+          throw new NullPointerException("La lista esta vacia");
+        
+        for(T o:list){
+            if(o.isActivo()==true){
+             System.out.println(o.getId()+"- "+o);
             }
-            output += "==========================================================================================================================\n";
-            String looped = String.format( output );
-            System.out.println(looped);
+        }           
         }catch (NullPointerException e){
             throw e;
         } catch (Exception e){
             throw new Exception("Hubo un inconveniente con la lista");
+        }
+    }
+      public void listarInactivas() throws Exception{
+        try{
+        if(list.isEmpty())            
+          throw new NullPointerException("La lista inactiva esta vacia");
+        
+        for(T o:list){
+            if(o.isActivo()==false){
+             System.out.println(o.getId()+"- "+o);
+            }
+        }           
+        }catch (NullPointerException e){
+            throw e;
+        } catch (Exception e){
+            throw new Exception("Hubo un inconveniente con la lista");
+        }
+    }
+    
+    public void buscarParaActivarId(int id){
+        try{
+        T result = null;
+
+        for( T l : list ){
+            if( l.getId()==id && l.isActivo()==false){
+                l.setActivo(true);
+            }
+        }
+        }catch (Exception e){            
+            throw e;
         }
     }
 
@@ -61,7 +93,7 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
         T result = null;
 
         for( T l : list ){
-            if( l.getId()==id ){
+            if( l.getId()==id && l.isActivo()==true){
                 result=l;
             }
         }
@@ -87,16 +119,7 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
 
     @Override
     public String toString() {
-        String output = "";
-        for( T obj : list ){
-            output += "--------------------------------------------------------------------------------------------------------------------------\n";
-            output += obj + "\n";
-        }
-        output += "--------------------------------------------------------------------------------------------------------------------------\n";
-        String looped = String.format( output );
-        return looped;
+        return "list=" + list;
     }
-
-
 
 }

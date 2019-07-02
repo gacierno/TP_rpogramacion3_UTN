@@ -65,7 +65,7 @@ public class NomenclaturaCatastral implements Serializable {
             getCircunscripcion(), getSeccion(), getManzana(), getParcela()
         );
         return output;
+
     }
-    
    
 }

@@ -8,12 +8,7 @@ public class Locador extends Cliente{
     }
     @Override
     public String toString() {
-        String output = String.format(
-                "Locador : {\n" +
-                super.toString() +
-                "\n}"
-        );
-        return output;
+        return "Locador " + super.toString();
     }
     
 }

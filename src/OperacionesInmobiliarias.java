@@ -50,7 +50,7 @@ public class OperacionesInmobiliarias {
         boolean check=false;
         while(check==false){
             System.out.println("CLIENTES\n\n");
-            System.out.println("1-Ver Listado de clientes\n2-Alta Cliente\n3-Baja Cliente\n4-Modificar Cliente\n5-Buscar Cliente\n6-Exit");
+            System.out.println("1-Ver Listado de clientes\n2-Alta Cliente\n3-Baja Cliente\n4-Modificar Cliente\n5-Buscar Cliente\n6-Ver clientes inactivos\n7-Activar cliente pre existente\n8-Exit");
             int opcion=sc.nextInt();
             switch(opcion){
                 case 1:
@@ -79,6 +79,22 @@ public class OperacionesInmobiliarias {
                     System.out.println(inmobiliaria.buscarCliente().mostrarTodo());
                     break;
                 case 6:
+                    try{
+                    System.out.println("Clientes Inactivos;");
+                     this.inmobiliaria.getClientes().listarInactivas();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                     break;
+                case 7:
+                     try{
+                    System.out.println("Id del cliente que desea reactivar:;");
+                     this.inmobiliaria.getClientes().buscarParaActivarId(sc.nextInt());
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                     break;
+                case 8:
                     check=true;
                     break;
                 default:
@@ -98,7 +114,7 @@ public class OperacionesInmobiliarias {
           boolean check=false;
         while(check==false){
             System.out.println("INMUEBLES\n\n");
-            System.out.println("1-Ver Listado de Inmuebles\n2-Alta Inmueble\n3-Baja Inmueble\n4-Modificar Inmueble\n5-Buscar Inmueble\n6-Exit");
+            System.out.println("1-Ver Listado de Inmuebles\n2-Alta Inmueble\n3-Baja Inmueble\n4-Modificar Inmueble\n5-Buscar Inmueble\n6-Ver inmuebles inactivos\n7-Activar inmueble pre existente\n8-Exit");
             int opcion=sc.nextInt();
             switch(opcion){
                 case 1:
@@ -126,7 +142,23 @@ public class OperacionesInmobiliarias {
                 case 5:
                     System.out.println(inmobiliaria.buscarInmueble().mostrarTodo());
                     break;
-                case 6:
+                  case 6:
+                    try{
+                    System.out.println("Inmuebles Inactivos;");
+                     this.inmobiliaria.getInmuebles().listarInactivas();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                     break;
+                case 7:
+                     try{
+                    System.out.println("Id del inmueble que desea reactivar:;");
+                     this.inmobiliaria.getInmuebles().buscarParaActivarId(sc.nextInt());
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                     break;                    
+                case 8:
                     check=true;
                     break;
                 default:
@@ -149,7 +181,7 @@ public class OperacionesInmobiliarias {
         while(check==false){
             System.out.println("Operaciones\n\n");
 
-            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Cuota de alquiler\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Exit");
+            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Cuota de alquiler\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Ver operaciones inactivoas\n10-Activar operaciones pre existente\n11-Exit");
 
             int opcion=sc.nextInt();
             switch(opcion){
@@ -219,8 +251,23 @@ public class OperacionesInmobiliarias {
                         System.out.println(e);
                     }
                     break;
-                case 9:
+                    case 9:
+                        try{
+                        System.out.println("Operaciones Inactivas:");
+                         this.inmobiliaria.getOperaciones().listarInactivas();
+                        }catch(Exception e){
+                            System.out.println(e);
+                        }
+                         break;
+                    case 10:
+                         try{
+                        System.out.println("Id de la operacion que desea reactivar:");
+                         this.inmobiliaria.getOperaciones().buscarParaActivarId(sc.nextInt());
+                        }catch(Exception e){
+                            System.out.println(e);
+                        }
 
+                case 11:
                     check=true;
                     break;
                 default:
