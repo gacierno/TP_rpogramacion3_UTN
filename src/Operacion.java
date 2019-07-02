@@ -32,7 +32,7 @@ public abstract class Operacion implements IIdentificables, Serializable {
 
     @Override
     public String toString() {
-        return "inmueble=" + inmueble ;
+        return inmueble.toString() ;
     }
 
     

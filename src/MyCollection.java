@@ -39,12 +39,16 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
     }
     public void listar() throws Exception{
         try{
-        if(list.isEmpty())            
-          throw new NullPointerException("La lista esta vacia");
-        
-        for(T o:list){
-             System.out.println(o.getId()+"- "+o);
-        }           
+            if(list.isEmpty()) throw new NullPointerException("La lista esta vacia");
+
+            String output = "";
+            for( T obj : list ){
+                output += "==========================================================================================================================\n";
+                output += obj + "\n";
+            }
+            output += "==========================================================================================================================\n";
+            String looped = String.format( output );
+            System.out.println(looped);
         }catch (NullPointerException e){
             throw e;
         } catch (Exception e){

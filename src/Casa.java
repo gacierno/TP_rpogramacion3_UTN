@@ -17,7 +17,12 @@ public class Casa extends Inmueble{
 
     @Override
     public String toString() {
-        return "Casa"+ super.toString();
+        String output = String.format(
+                "Casa : {\n" +
+                    super.toString() +
+                "}"
+        );
+        return output;
     }
 
         

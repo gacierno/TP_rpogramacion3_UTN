@@ -6,7 +6,12 @@ public class Locador extends Cliente{
 
     @Override
     public String toString() {
-        return "Locador " + super.toString();
+        String output = String.format(
+                "Locador : {\n" +
+                super.toString() +
+                "\n}"
+        );
+        return output;
     }
     
 }

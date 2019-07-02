@@ -16,7 +16,12 @@ public class Lote extends Inmueble{
 
     @Override
     public String toString() {
-        return "Lote" + super.toString();
+        String output = String.format(
+                "Lote : {\n" +
+                    super.toString() +
+                "}"
+        );
+        return output;
     }
     
 }

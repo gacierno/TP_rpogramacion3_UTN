@@ -60,7 +60,13 @@ public abstract class Inmueble implements IIdentificables, Serializable {
 
     @Override
     public String toString() {
-        return  ", domicilio=" + domicilio + ", descripcion=" + descripcion + ", nomCatastral=" + nomCatastral;
+        String output = String.format(
+                "\tID:\t%d,\n" +
+                "\tDomicilio:\t%s,\n" +
+                "\tNomenclatura:\t%s,\n",
+                getId(), getDomicilio(),getNomCatastral()
+        );
+        return output;
     }
     
     

@@ -196,7 +196,19 @@ public class Alquiler extends Operacion implements IIdentificables {
 
     @Override
     public String toString() {
-        return "Alquiler{" +super.toString()+ "id=" + id + ", locadores=" + locadores + ", locatarios=" + locatarios + ", garantes=" + garantes + ", duracion=" + duracion + ", fechaInicio=" + fechaInicio + ", valorInicial=" + valorInicial + '}';
+        String output = String.format(
+                "Aluiler : {\n" +
+                        super.toString() + "\n" +
+                        "%s,\n" +
+                        "%s,\n" +
+                        "%s,\n" +
+                        "Duracion :\t%s,\n" +
+                        "Fecha de inicio :\t%s,\n" +
+                        "Valor Inicial :\t%s\n" +
+                "}",
+                getLocadores().toString(), getLocatarios().toString(), getGarantes().toString(), getDuracion(), getFechaInicio()
+        );
+        return output;
     }
 
     @Override

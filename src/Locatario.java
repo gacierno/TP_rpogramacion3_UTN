@@ -16,7 +16,14 @@ public class Locatario extends Cliente{
 
     @Override
     public String toString() {
-        return "Locatario" + "sueldo=" + sueldo +super.toString();
+        String output = String.format(
+                "Locatario : {\n" +
+                        super.toString() + ",\n" +
+                        "\tSueldo :\t%.2f\n" +
+                "}",
+                getSueldo()
+        );
+        return output;
     }
     
 }

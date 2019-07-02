@@ -16,7 +16,14 @@ public class Garante extends Cliente{
 
     @Override
     public String toString() {
-        return "Garante" + "sueldo=" + sueldo +super.toString();
+        String output = String.format(
+                "Garante : {\n" +
+                        super.toString() + ",\n" +
+                        "\tSueldo :\t%.2f\n" +
+                        "}",
+                getSueldo()
+        );
+        return output;
     }
     
     

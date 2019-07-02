@@ -28,7 +28,14 @@ public class Departamento extends Inmueble{
 
     @Override
     public String toString() {
-        return "Departamento" + "Cochera=" + Cochera+ super.toString();
+        String output = String.format(
+                "Departamento : {\n" +
+                        super.toString() +
+                        "\tCochera :\t%s\n" +
+                "}",
+                getCochera()
+        );
+        return output;
     }
     
 }
