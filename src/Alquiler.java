@@ -196,6 +196,7 @@ public class Alquiler extends Operacion{
     @Override
     public String toString() {
         String output = String.format(
+                "==========================================================================================================================\n"+
                 "Aluiler : {\n" +
                         super.toString() + "\n" +
                         "%s,\n" +
@@ -203,9 +204,10 @@ public class Alquiler extends Operacion{
                         "%s,\n" +
                         "Duracion :\t%s,\n" +
                         "Fecha de inicio :\t%s,\n" +
-                        "Valor Inicial :\t%s\n" +
-                "}",
-                getLocadores().toString(), getLocatarios().toString(), getGarantes().toString(), getDuracion(), getFechaInicio()
+                        "Valor Inicial :\t%f\n" +
+                "}\n"+
+                "==========================================================================================================================",
+                getLocadores().toString(), getLocatarios().toString(), getGarantes().toString(), getDuracion(), getFechaInicio(),getValorInicial()
         );
         return output;
     }

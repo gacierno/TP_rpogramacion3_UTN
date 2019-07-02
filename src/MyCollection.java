@@ -87,7 +87,16 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
 
     @Override
     public String toString() {
-        return "list=" + list;
+        String output = "";
+        for( T obj : list ){
+            output += "--------------------------------------------------------------------------------------------------------------------------\n";
+            output += obj + "\n";
+        }
+        output += "--------------------------------------------------------------------------------------------------------------------------\n";
+        String looped = String.format( output );
+        return looped;
     }
+
+
 
 }
