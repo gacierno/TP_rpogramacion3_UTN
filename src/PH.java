@@ -19,12 +19,7 @@ public class PH extends Inmueble{
 
     @Override
     public String toString() {
-        String output = String.format(
-                "PH : {\n" +
-                    super.toString() +
-                    "}"
-        );
-        return output;
+        return "PH" + super.toString() ;
     }
     
 }

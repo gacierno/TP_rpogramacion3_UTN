@@ -19,12 +19,7 @@ public class Duplex extends Inmueble{
 
     @Override
     public String toString() {
-        String output = String.format(
-                "Duplex : {\n" +
-                    super.toString() +
-                "}"
-        );
-        return output;
+        return "Duplex"+ super.toString();
     }
     
 }

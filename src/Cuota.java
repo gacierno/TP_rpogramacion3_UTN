@@ -26,6 +26,8 @@ public class Cuota implements IIdentificables, Serializable {
         this.valor = valor;
         this.pagado = false;
     }
+    
+    
 
     public int getNumero() {
         return numero;
@@ -81,6 +83,17 @@ public class Cuota implements IIdentificables, Serializable {
     public int getId() {
         return this.id;
     }
+
+    @Override
+    public boolean isActivo() {
+       return true;
+    }
+
+    @Override
+    public void setActivo(boolean bool) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
     
     

@@ -18,9 +18,11 @@ public abstract class Inmueble implements IIdentificables, Serializable {
     private Domicilio domicilio;
     private String descripcion;
     private NomenclaturaCatastral nomCatastral;
+    private boolean activo=false;
 
     public Inmueble(){
          this.setId();
+         activo=true;
     }
     
     public Inmueble(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {      
@@ -28,6 +30,7 @@ public abstract class Inmueble implements IIdentificables, Serializable {
         this.domicilio = domicilio;
         this.descripcion = descripcion;
         this.nomCatastral = nomCatastral;
+        activo=true;
     }
    
       private void setId(){
@@ -37,6 +40,15 @@ public abstract class Inmueble implements IIdentificables, Serializable {
     public int getId() {
         return id;
     }   
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
 
     public Domicilio getDomicilio() {
         return domicilio;
@@ -64,13 +76,8 @@ public abstract class Inmueble implements IIdentificables, Serializable {
 
     @Override
     public String toString() {
-        String output = String.format(
-                "\tID:\t%d,\n" +
-                "\tDomicilio:\t%s,\n" +
-                "\tNomenclatura:\t%s,\n",
-                getId(), getDomicilio(),getNomCatastral()
-        );
-        return output;
-    }
-
+        return  ", domicilio=" + domicilio + ", descripcion=" + descripcion + ", nomCatastral=" + nomCatastral;
+    }    
+    
+    
 }

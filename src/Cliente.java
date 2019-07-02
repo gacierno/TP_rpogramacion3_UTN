@@ -11,10 +11,12 @@ public class Cliente implements IIdentificables, Serializable {
     private String telefono;
     private String email;
     private String observacion;
+    private boolean activo;
 
     
     public Cliente(){
         this.setId();
+        this.activo=true;
     }
     public Cliente(String sexo, String dni,String nombre, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
         this.setId();
@@ -26,8 +28,20 @@ public class Cliente implements IIdentificables, Serializable {
         this.setTelefono( telefono );
         this.setEmail( email );
         this.setObservacion( observacion );
+        this.activo=true;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    
+    
+    
     //  setters
     private void setId(){
         lastId ++;
@@ -107,17 +121,8 @@ public class Cliente implements IIdentificables, Serializable {
 
     @Override
     public String toString() {
-        String output = String.format(
-                "\tID:\t%d,\n" +
-                "\tNombre:\t%s,\n" +
-                "\tApellido:\t%s,\n" +
-                "\tDomicilio:\t%s,\n" +
-                "\tTelefono:\t%s,\n" +
-                "\tEmail:\t%s",
-                getId(), getNombre(), getApellido(), getDomicilio(),getTelefono(),getEmail()
-        );
-        return output;
+        return "sexo=" + sexo + ", dni=" + dni + ", apellido=" + apellido + ", domicilio=" + domicilio + ", telefono=" + telefono + ", email=" + email + ", observacion=" + observacion;
     }
-
+    
     
 }

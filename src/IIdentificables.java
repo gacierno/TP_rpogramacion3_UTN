@@ -10,4 +10,6 @@
  */
 public interface IIdentificables {
     int getId();
+    boolean isActivo();
+    void setActivo(boolean bool);
 }

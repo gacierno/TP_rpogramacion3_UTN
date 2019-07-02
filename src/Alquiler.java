@@ -195,30 +195,16 @@ public class Alquiler extends Operacion{
 
     @Override
     public String toString() {
-        String output = String.format(
-                "==========================================================================================================================\n"+
-                "Aluiler : {\n" +
-                        super.toString() + "\n" +
-                        "%s,\n" +
-                        "%s,\n" +
-                        "%s,\n" +
-                        "Duracion :\t%s,\n" +
-                        "Fecha de inicio :\t%s,\n" +
-                        "Valor Inicial :\t%f\n" +
-                "}\n"+
-                "==========================================================================================================================",
-                getLocadores().toString(), getLocatarios().toString(), getGarantes().toString(), getDuracion(), getFechaInicio(),getValorInicial()
-        );
-        return output;
+        return "Alquiler{" +super.toString()+ ", locadores=" + locadores + ", locatarios=" + locatarios + ", garantes=" + garantes + ", duracion=" + duracion + ", fechaInicio=" + fechaInicio + ", valorInicial=" + valorInicial + '}';
     }
 
   
     public void ModificarCuota() throws Exception{
         try{
-            System.out.println("Selecciona la cuota que desee modificar: ");
-            getCuotas().listar();
-            Scanner sc=new Scanner(System.in);
-            Cuota cuota=getCuotas().buscarPorId(sc.nextInt());
+        System.out.println("Selecciona la cuota que desee modificar: ");
+        getCuotas().listar();
+        Scanner sc=new Scanner(System.in);
+        Cuota cuota=getCuotas().buscarPorId(sc.nextInt());
             System.out.println("Seguro desdea modificar esta cuota?(si/no)\n"+cuota);
             sc.nextLine();
             if(sc.nextLine().equals("si")){                             
@@ -235,9 +221,9 @@ public class Alquiler extends Operacion{
                     cuota.setPagado(false);
                 }
             }
-        }catch(Exception e){
-            throw e;
-        }
+    }catch(Exception e){
+        throw e;
+    }
     }
 
    
