@@ -11,12 +11,25 @@ import java.io.Serializable;
  * @author asd
  */
 public abstract class Operacion implements IIdentificables, Serializable {
+    static private int lastId = 0;
+    private int id;
     private Inmueble inmueble;
 
+    public Operacion(){
+        this.setId();
+    }
     public Operacion(Inmueble inmueble) {
+        this.setId();
         this.inmueble = inmueble;
     }
 
+    
+    private void setId(){
+        lastId ++;
+        this.id = lastId;
+    }
+    
+    
     public Inmueble getInmueble() {
         return inmueble;
     }
@@ -26,9 +39,10 @@ public abstract class Operacion implements IIdentificables, Serializable {
     }
 
  
-
     @Override
-    public abstract int getId() ;
+       public int getId() {
+           return this.id;
+       }
 
     @Override
     public String toString() {

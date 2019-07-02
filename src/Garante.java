@@ -5,7 +5,9 @@ public class Garante extends Cliente{
         super(sexo, dni,nombre, apellido, domicilio, telefono, email, observacion);
         this.sueldo = sueldo;
     }
-
+    public Garante(){
+        
+    }
     public double getSueldo() {
         return sueldo;
     }

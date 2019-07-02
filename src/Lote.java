@@ -10,6 +10,9 @@
  */
 public class Lote extends Inmueble{
 
+    public Lote(){
+        
+    }
     public Lote(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         super(domicilio, descripcion, nomCatastral);
     }

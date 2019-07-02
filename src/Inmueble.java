@@ -19,6 +19,10 @@ public abstract class Inmueble implements IIdentificables, Serializable {
     private String descripcion;
     private NomenclaturaCatastral nomCatastral;
 
+    public Inmueble(){
+         this.setId();
+    }
+    
     public Inmueble(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {      
         this.setId();
         this.domicilio = domicilio;
@@ -61,7 +65,7 @@ public abstract class Inmueble implements IIdentificables, Serializable {
     @Override
     public String toString() {
         return  ", domicilio=" + domicilio + ", descripcion=" + descripcion + ", nomCatastral=" + nomCatastral;
-    }
+    }    
     
     
 }
