@@ -76,7 +76,7 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 5:
-                    System.out.println(inmobiliaria.buscarCliente());
+                    System.out.println(inmobiliaria.buscarCliente().mostrarTodo());
                     break;
                 case 6:
                     check=true;
@@ -124,7 +124,7 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 5:
-                    System.out.println(inmobiliaria.buscarInmueble());
+                    System.out.println(inmobiliaria.buscarInmueble().mostrarTodo());
                     break;
                 case 6:
                     check=true;
@@ -182,7 +182,7 @@ public class OperacionesInmobiliarias {
 
                     try{
                     Alquiler operacion=(Alquiler)inmobiliaria.buscarOperacion();
-                    System.out.println(operacion);
+                    System.out.println(operacion.MostrarTodo());
                     operacion.listarCuotas();
                     }catch(Exception e){
                         System.out.println(e);

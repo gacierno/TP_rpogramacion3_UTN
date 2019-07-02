@@ -138,4 +138,10 @@ public class Domicilio implements Serializable {
         );
         return output;
     }
+  
+
+    public String mostrarTodo() {
+        return "calle=" + calle + ", numero=" + numero + ", piso=" + piso + ", departamento=" + departamento + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", provincia=" + provincia + ", pais=" + pais;
+    }
+   
 }

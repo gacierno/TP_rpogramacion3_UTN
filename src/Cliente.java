@@ -108,16 +108,28 @@ public class Cliente implements IIdentificables, Serializable {
     @Override
     public String toString() {
         String output = String.format(
+                "\tID:\t%d, " +
+                "\tNombre:\t%s, " +
+                "\tApellido:\t%s, ",               
+                getId(), getNombre(), getApellido()
+        );
+        return output;
+    }
+    
+    public String mostrarTodo() {
+        String output = String.format(
+                "==========================================================================================================================\n"+
+                "\tCliente:\t%s,\n" +
                 "\tID:\t%d,\n" +
                 "\tNombre:\t%s,\n" +
                 "\tApellido:\t%s,\n" +
                 "\tDomicilio:\t%s,\n" +
                 "\tTelefono:\t%s,\n" +
-                "\tEmail:\t%s",
-                getId(), getNombre(), getApellido(), getDomicilio(),getTelefono(),getEmail()
+                "\tEmail:\t%s\n"+
+                "==========================================================================================================================",
+                this.getClass().getName(),getId(), getNombre(), getApellido(), getDomicilio(),getTelefono(),getEmail()
         );
         return output;
     }
-
     
 }

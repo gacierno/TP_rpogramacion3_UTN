@@ -195,7 +195,21 @@ public class Alquiler extends Operacion{
 
     @Override
     public String toString() {
-        String output = String.format(
+        String output= 
+                "Alquiler : Id: "+super.getId()+"{\n" +
+                        "   Inmueble = Id: "+super.getInmueble().getId()+ super.getInmueble().getDomicilio() + "\n" +
+                        "   Locadores = "+"Id: "+this.locadores.list.get(0).getId()+" Nombre: "+this.locadores.list.get(0).getNombre()+" "+this.locadores.get(0).getApellido()+"\n" +
+                        "   Locatarios = "+"Id: "+this.locatarios.list.get(0).getId()+" Nombre: "+this.locatarios.list.get(0).getNombre()+" "+this.locatarios.get(0).getApellido()+"\n" +
+                        "   Garantes = "+"Id:"+this.garantes.list.get(0).getId()+" Nombre: "+this.garantes.list.get(0).getNombre()+" "+this.garantes.get(0).getApellido()+"\n" +
+                        "   Duracion : "+ getDuracion() +" meses\n" +
+                        "   Fecha de inicio : "+ getFechaInicio() +"\n" +
+                        "   Valor Inicial : "+ getValorInicial() +"\n" +
+                "}";
+            return output;
+    }
+    
+    public String MostrarTodo(){
+         String output = String.format(
                 "==========================================================================================================================\n"+
                 "Aluiler : {\n" +
                         super.toString() + "\n" +

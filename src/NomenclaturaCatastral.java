@@ -61,8 +61,8 @@ public class NomenclaturaCatastral implements Serializable {
     @Override
     public String toString() {
         String output = String.format(
-            "{ \t Circunscripcion :\t%s,\tSeccion :\t%s,\tManzana :\t%s,\tParcela :\t%s\t}",
-                getCircunscripcion(), getSeccion(), getManzana(), getParcela()
+            "Circunscripcion= %s, Seccion= %s, Manzana= %s, Parcela= %s",
+            getCircunscripcion(), getSeccion(), getManzana(), getParcela()
         );
         return output;
     }
