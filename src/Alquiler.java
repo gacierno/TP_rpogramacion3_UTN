@@ -23,7 +23,7 @@ public class Alquiler extends Operacion{
     private double valorInicial;
     
   
-    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble) {
+    public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble) throws Exception {
         super(inmueble);       
         this.tipoAumento = tipoAumento;
         this.porcentajeAumento = porcentajeAumento;
@@ -113,31 +113,59 @@ public class Alquiler extends Operacion{
     }
 
     //Crea las cuotas y establece el valor segun el aumento estipulado
-    private void establecerCuotas(){
+    private void establecerCuotas() throws Exception{
+       try{
         int cont;
         double _valorInicial=this.getValorInicial();
         for(cont=1;cont<=this.duracion;cont++){
             cuotas.alta(new Cuota(cont,((cont/(this.getTipoAumento()+1))+1)*_valorInicial));
         }
+       }catch(Exception e){
+           throw e;
+       }
     }
     
-    public void agregarLocador(Locador locador){
+    public void agregarLocador(Locador locador) throws Exception{
+        try{
         locadores.alta(locador);
+        }catch(Exception e){
+            throw e;
+        }
     }
-    public void agregarLocatario(Locatario locatario){
+    public void agregarLocatario(Locatario locatario) throws Exception{
+        try{
         locatarios.alta(locatario);
+        }catch(Exception e){
+            throw e;
+        }
     }
-     public void agregarGarante(Garante garante){
-        garantes.alta(garante);
+     public void agregarGarante(Garante garante) throws Exception{
+        try{
+         garantes.alta(garante);
+         }catch(Exception e){
+            throw e;
+        }
     }
-     public void quitarLocador(int id){
+     public void quitarLocador(int id) throws Exception{
+         try{
         locadores.baja(id);
+         }catch(Exception e){
+             throw e;
+         }
     }
-    public void quitarLocatario(int id){
+    public void quitarLocatario(int id) throws Exception{
+        try{
         locatarios.baja(id);
+        }catch(Exception e){
+             throw e;
+         }
     }
-     public void quitarGarante(int id){
-        garantes.baja(id);
+     public void quitarGarante(int id) throws Exception{
+        try{
+         garantes.baja(id);
+         }catch(Exception e){
+             throw e;
+         }
     }
     public void listarCuotas() throws Exception{
         try{
@@ -197,13 +225,13 @@ public class Alquiler extends Operacion{
     public String toString() {
         String output= 
                 "Alquiler : Id: "+super.getId()+"{\n" +
-                        "   Inmueble = Id: "+super.getInmueble().getId()+ super.getInmueble().getDomicilio() + "\n" +
-                        "   Locadores = "+"Id: "+this.locadores.list.get(0).getId()+" Nombre: "+this.locadores.list.get(0).getNombre()+" "+this.locadores.get(0).getApellido()+"\n" +
-                        "   Locatarios = "+"Id: "+this.locatarios.list.get(0).getId()+" Nombre: "+this.locatarios.list.get(0).getNombre()+" "+this.locatarios.get(0).getApellido()+"\n" +
-                        "   Garantes = "+"Id:"+this.garantes.list.get(0).getId()+" Nombre: "+this.garantes.list.get(0).getNombre()+" "+this.garantes.get(0).getApellido()+"\n" +
-                        "   Duracion : "+ getDuracion() +" meses\n" +
-                        "   Fecha de inicio : "+ getFechaInicio() +"\n" +
-                        "   Valor Inicial : "+ getValorInicial() +"\n" +
+                        "       Inmueble = Id: "+super.getInmueble().getId()+ super.getInmueble().getDomicilio() + "\n" +
+                        "       Locadores = "+"Id: "+this.locadores.list.get(0).getId()+" Nombre: "+this.locadores.list.get(0).getNombre()+" "+this.locadores.get(0).getApellido()+"\n" +
+                        "       Locatarios = "+"Id: "+this.locatarios.list.get(0).getId()+" Nombre: "+this.locatarios.list.get(0).getNombre()+" "+this.locatarios.get(0).getApellido()+"\n" +
+                        "       Garantes = "+"Id:"+this.garantes.list.get(0).getId()+" Nombre: "+this.garantes.list.get(0).getNombre()+" "+this.garantes.get(0).getApellido()+"\n" +
+                        "       Duracion : "+ getDuracion() +" meses\n" +
+                        "       Fecha de inicio : "+ getFechaInicio() +"\n" +
+                        "       Valor Inicial : "+ getValorInicial() +"\n" +
                 "}";
             return output;
     }
@@ -211,14 +239,14 @@ public class Alquiler extends Operacion{
     public String MostrarTodo(){
          String output = String.format(
                 "==========================================================================================================================\n"+
-                "Aluiler : {\n" +
+                "Alquiler : {\n" +
                         super.toString() + "\n" +
-                        "%s,\n" +
-                        "%s,\n" +
-                        "%s,\n" +
-                        "Duracion :\t%s,\n" +
-                        "Fecha de inicio :\t%s,\n" +
-                        "Valor Inicial :\t%f\n" +
+                        "       %s,\n" +
+                        "       %s,\n" +
+                        "       %s,\n" +
+                        "       Duracion :\t%s meses,\n" +
+                        "       Fecha de inicio :\t%s,\n" +
+                        "       Valor Inicial :\t%f\n" +
                 "}\n"+
                 "==========================================================================================================================",
                 getLocadores().toString(), getLocatarios().toString(), getGarantes().toString(), getDuracion(), getFechaInicio(),getValorInicial()

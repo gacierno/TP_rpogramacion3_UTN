@@ -83,7 +83,8 @@ public class Inmobiliaria{
         return inmueble;
     }
     
-    public void altaInmueble(){
+    public void altaInmueble() throws Exception{
+        try{
          System.out.println("1-Duplex 2-PH 3-Casa 4-Lote 5-Departamento");
          Scanner sc=new Scanner(System.in);
          int tipo=sc.nextInt();
@@ -109,15 +110,19 @@ public class Inmobiliaria{
               // code block
           }
         if(inmueble!=null){
+            
         inmuebles.alta(this.cargarDatosInmueble(inmueble));
         }
          }
          else{
               System.out.println("Error, opcion no existente");
          }
+        }catch(Exception e){
+            throw e;
+        }
     }
     
-    public void modificarInmueble(int id){
+    public void modificarInmueble(int id) throws Exception{
         try{
         Scanner sc=new Scanner(System.in);
         Inmueble inmueble=this.inmuebles.buscarPorId(id);
@@ -199,7 +204,8 @@ public class Inmobiliaria{
         return cliente;
     }
     
-    public void altaCliente(){
+    public void altaCliente() throws Exception{
+        try{
          Scanner sc =new Scanner(System.in);
         System.out.println("Tipo De Cliente: 1-Locador 2-Locatario 3-Garante");        
         int tipo=sc.nextInt();
@@ -226,9 +232,12 @@ public class Inmobiliaria{
         else{            
           System.out.println("Error, opcion no existente");
         }
+        }catch(Exception e){
+            throw e;
+        }
     }
     
-     public void modificarCliente(int id){
+     public void modificarCliente(int id) throws Exception{
         try{
         Scanner sc=new Scanner(System.in);
         Cliente cliente=this.clientes.buscarPorId(id);
@@ -294,7 +303,7 @@ public class Inmobiliaria{
             throw e;
         }
     }
-    public Inmueble buscarInmueble(){
+    public Inmueble buscarInmueble() throws Exception{
         try{
         return inmuebles.buscarPorId(pedirId());
         }catch(Exception e){
@@ -320,21 +329,40 @@ public class Inmobiliaria{
         return id;
     }
     
-    public Cliente buscarCliente(){
-        
+    public Cliente buscarCliente() throws Exception{
+        try{
        return clientes.buscarPorId(pedirId());
+        }catch(Exception e){
+            throw e;
+        }
     }
-    public Operacion buscarOperacion(){        
+    public Operacion buscarOperacion() throws Exception{     
+        try{
         return operaciones.buscarPorId(pedirId());
+        }catch(Exception e){
+            throw e;
+        }
     }
-      public void bajaInmueble(){       
+      public void bajaInmueble() throws Exception{    
+          try{
         inmuebles.baja(pedirId());
+        }catch(Exception e){
+            throw e;
+        }
     }
-    public void bajaCliente(){
+    public void bajaCliente() throws Exception{
+        try{
         clientes.baja(pedirId());
+        }catch(Exception e){
+            throw e;
+        }
     }
-    public void bajaOperacion(){
+    public void bajaOperacion() throws Exception{
+        try{
         operaciones.baja(pedirId());
+        }catch(Exception e){
+            throw e;
+        }
     }
     public void listarInmuebles() throws Exception{
         try{
@@ -360,15 +388,22 @@ public class Inmobiliaria{
     //Busca los inquilinos que tienen la cuota de este mes impaga y los muestra
     public void listarMorosos() throws Exception{
         try{
+         boolean vacio=true;
         for(Operacion o:operaciones.list){
             if(o instanceof Alquiler){
                 int cuotaDelMes=((Alquiler) o).ObtenerNumCuota();
                 if(cuotaDelMes>=0&&cuotaDelMes<=((Alquiler) o).getDuracion()){
                 if(!((Alquiler) o).getCuotas().list.get(cuotaDelMes-1).isPagado()){
-                    System.out.println(o.getId()+"- "+((Alquiler) o).getLocatarios()); 
+                    System.out.println("==========================================================================================================================\n"+
+                                o.getId()+"- "+((Alquiler) o).getLocatarios()+
+                                "\n==========================================================================================================================");
+                    vacio=false;
                 }
                 }
              }
+        }
+        if(vacio==true){
+            System.out.println("No quedan morosos este mes");
         }
         }catch (NullPointerException e){
              throw new Exception(e.getMessage().concat(" Operaciones"));  

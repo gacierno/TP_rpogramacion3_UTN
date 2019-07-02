@@ -133,7 +133,7 @@ public class Cliente implements IIdentificables, Serializable {
     public String mostrarTodo() {
         String output = String.format(
                 "==========================================================================================================================\n"+
-                "\tCliente:\t%s,\n" +
+                "Cliente: %s\n" +
                 "\tID:\t%d,\n" +
                 "\tNombre:\t%s,\n" +
                 "\tApellido:\t%s,\n" +

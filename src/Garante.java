@@ -18,7 +18,7 @@ public class Garante extends Cliente{
 
     @Override
     public String toString() {
-        return "Garante" + "sueldo=" + sueldo +super.toString();
+        return "Garante " +super.toString()+ "\tsueldo= "+sueldo;
     }
     
     

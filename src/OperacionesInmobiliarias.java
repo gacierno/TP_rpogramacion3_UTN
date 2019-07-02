@@ -52,6 +52,7 @@ public class OperacionesInmobiliarias {
             System.out.println("CLIENTES\n\n");
             System.out.println("1-Ver Listado de clientes\n2-Alta Cliente\n3-Baja Cliente\n4-Modificar Cliente\n5-Buscar Cliente\n6-Ver clientes inactivos\n7-Activar cliente pre existente\n8-Exit");
             int opcion=sc.nextInt();
+            System.out.println("\n\n");
             switch(opcion){
                 case 1:
                     try{
@@ -61,10 +62,18 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 2:
+                    try{
                     inmobiliaria.altaCliente();
+                    }catch(Exception e){
+                        System.out.println(e);;
+                    }
                     break;
                 case 3:
+                    try{
                     inmobiliaria.bajaCliente();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 4:
                     try{
@@ -76,7 +85,11 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 5:
+                    try{
                     System.out.println(inmobiliaria.buscarCliente().mostrarTodo());
+                    }catch (Exception e){
+                       System.out.println(e);
+                    }
                     break;
                 case 6:
                     try{
@@ -116,6 +129,7 @@ public class OperacionesInmobiliarias {
             System.out.println("INMUEBLES\n\n");
             System.out.println("1-Ver Listado de Inmuebles\n2-Alta Inmueble\n3-Baja Inmueble\n4-Modificar Inmueble\n5-Buscar Inmueble\n6-Ver inmuebles inactivos\n7-Activar inmueble pre existente\n8-Exit");
             int opcion=sc.nextInt();
+             System.out.println("\n\n");
             switch(opcion){
                 case 1:
                     try{
@@ -125,10 +139,18 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 2:
+                    try{
                     inmobiliaria.altaInmueble();
+                    }catch(Exception e){
+                        System.out.println(e);;
+                    }
                     break;
                 case 3:
+                    try{
                     inmobiliaria.bajaInmueble();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 4:
                       try{
@@ -140,7 +162,11 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 5:
+                    try{
                     System.out.println(inmobiliaria.buscarInmueble().mostrarTodo());
+                     }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                   case 6:
                     try{
@@ -181,9 +207,10 @@ public class OperacionesInmobiliarias {
         while(check==false){
             System.out.println("Operaciones\n\n");
 
-            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Cuota de alquiler\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Ver operaciones inactivoas\n10-Activar operaciones pre existente\n11-Exit");
+            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Cuota de alquiler\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Ver operaciones inactivas\n10-Activar operaciones pre existente\n11-Exit");
 
             int opcion=sc.nextInt();
+             System.out.println("\n\n");
             switch(opcion){
                 case 1:
                     try{
@@ -200,7 +227,11 @@ public class OperacionesInmobiliarias {
                     }
                     break;
                 case 3:
+                    try{
                     inmobiliaria.bajaOperacion();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 4:
                     try{
@@ -276,8 +307,7 @@ public class OperacionesInmobiliarias {
             }
         }
 
-          try{
-              System.out.println(this.inmobiliaria.getOperaciones());
+          try{      
               ServiceSaveFile<Operacion> saveOperacion = new ServiceSaveFile<>( "operaciones.dat", this.inmobiliaria.getOperaciones() );
           }catch ( Exception e ){
               throw e;

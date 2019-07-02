@@ -133,7 +133,7 @@ public class Domicilio implements Serializable {
     @Override
     public String toString() {
         String output = String.format(
-                "Domicilio : Calle = %s,Numero = %d",
+                "Calle = %s,Numero = %d",
                 this.getCalle(), this.getNumero()
         );
         return output;

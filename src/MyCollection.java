@@ -24,31 +24,36 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
         this.list=new ArrayList<T>();
     }
     
-    public void alta(T object){  
+    public void alta(T object) throws Exception{  
         try{      
-        if(buscarPorId(object.getId())==null){
-            list.add(object);
-        }
+         buscarPorId(object.getId());
+         throw new Exception("Error, ese id ya se encuentra en la lista");
+        }catch(NullPointerException e){
+            list.add(object);            
         }catch(Exception e){
             throw e;
         }
     }
 
-    public void baja(int id){
+    public void baja(int id) throws Exception{
         try{
         buscarPorId(id).setActivo(false);
         }catch(Exception e){
-            throw e;
+            throw new Exception("Error, ese id no esta disponible para dar de baja");
         }
     }
+           
+    
     public void listar() throws Exception{
         try{
         if(list.isEmpty())            
           throw new NullPointerException("La lista esta vacia");
         
         for(T o:list){
-            if(o.isActivo()==true){
-             System.out.println(o.getId()+"- "+o);
+            if(o.isActivo()==true){             
+             System.out.println("==========================================================================================================================\n"+
+                                o.getId()+"- "+o+
+                                "\n==========================================================================================================================");
             }
         }           
         }catch (NullPointerException e){
@@ -63,8 +68,10 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
           throw new NullPointerException("La lista inactiva esta vacia");
         
         for(T o:list){
-            if(o.isActivo()==false){
-             System.out.println(o.getId()+"- "+o);
+             if(o.isActivo()==false){             
+             System.out.println("==========================================================================================================================\n"+
+                                o.getId()+"- "+o+
+                                "\n==========================================================================================================================");
             }
         }           
         }catch (NullPointerException e){
@@ -74,21 +81,27 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
         }
     }
     
-    public void buscarParaActivarId(int id){
+    public void buscarParaActivarId(int id) throws Exception{
         try{
         T result = null;
 
         for( T l : list ){
             if( l.getId()==id && l.isActivo()==false){
                 l.setActivo(true);
+                result=l;
             }
         }
-        }catch (Exception e){            
+        if(result==null){
+            throw new NullPointerException("No se encontro ese id para activar");
+        }
+        }catch (NullPointerException e){            
+            throw e;
+        }catch(Exception e){
             throw e;
         }
     }
 
-    public T buscarPorId(int id){
+    public T buscarPorId(int id) throws Exception{
         try{
         T result = null;
 
@@ -97,15 +110,24 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
                 result=l;
             }
         }
+        if(result==null){
+            throw new NullPointerException("No se encontro ese id");
+        }
         return result;
-        }catch (Exception e){            
+        }catch (NullPointerException e){            
+            throw e;
+        }catch(Exception e){
             throw e;
         }
     }
 
-    public void modificar(T Object, int id){
+    public void modificar(T Object, int id) throws Exception{
+        try{
         if(buscarPorId(id)!=null){
             list.set(id, Object);
+        }
+        }catch(Exception e){
+            throw e;
         }
     }
 
@@ -119,7 +141,7 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
 
     @Override
     public String toString() {
-        return "list=" + list;
+        return "" + list;
     }
 
 }

@@ -18,7 +18,7 @@ public Locatario(){
 
     @Override
     public String toString() {
-        return "Locatario" + "sueldo=" + sueldo +super.toString();
+        return "Locatario" +super.toString()+ "\tsueldo= " + sueldo ;
     }
     
 }
