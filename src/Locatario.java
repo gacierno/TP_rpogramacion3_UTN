@@ -5,7 +5,9 @@ public class Locatario extends Cliente{
         super(sexo, dni,nombre, apellido, domicilio, telefono, email, observacion);
         this.sueldo = sueldo;
     }
-
+public Locatario(){
+    
+}
     public double getSueldo() {
         return sueldo;
     }

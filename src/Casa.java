@@ -10,7 +10,9 @@
  * @author usuario
  */
 public class Casa extends Inmueble{
-
+    public Casa(){
+        
+    }
     public Casa(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         super(domicilio, descripcion, nomCatastral);
     }

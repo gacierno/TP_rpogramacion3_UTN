@@ -10,7 +10,9 @@
  */
 public class Duplex extends Inmueble{
 
-    
+    public Duplex(){
+        
+    }
     public Duplex(Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         super(domicilio, descripcion, nomCatastral);
     }

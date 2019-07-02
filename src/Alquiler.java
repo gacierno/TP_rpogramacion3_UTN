@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,9 +11,7 @@ import java.time.LocalDate;
  *
  * @author asd
  */
-public class Alquiler extends Operacion implements IIdentificables {
-    private int id;
-    private int contId = 1;
+public class Alquiler extends Operacion{   
     private MyCollection<Locador> locadores;
     private MyCollection<Locatario> locatarios;
     private MyCollection<Garante> garantes;
@@ -22,10 +21,10 @@ public class Alquiler extends Operacion implements IIdentificables {
     private int duracion;
     private LocalDate fechaInicio;
     private double valorInicial;
-
+    
+  
     public Alquiler(int tipoAumento, int porcentajeAumento, int duracion, LocalDate fechaInicio, double valorInicial, Inmueble inmueble) {
-        super(inmueble);
-        this.id=contId++;
+        super(inmueble);       
         this.tipoAumento = tipoAumento;
         this.porcentajeAumento = porcentajeAumento;
         this.duracion = duracion;
@@ -118,7 +117,7 @@ public class Alquiler extends Operacion implements IIdentificables {
         int cont;
         double _valorInicial=this.getValorInicial();
         for(cont=1;cont<=this.duracion;cont++){
-            cuotas.alta(new Cuota(cont,((cont/this.getTipoAumento())+1)*_valorInicial));
+            cuotas.alta(new Cuota(cont,((cont/(this.getTipoAumento()+1))+1)*_valorInicial));
         }
     }
     
@@ -211,10 +210,35 @@ public class Alquiler extends Operacion implements IIdentificables {
         return output;
     }
 
-    @Override
-    public int getId() {
-        return this.id;
+  
+    public void ModificarCuota() throws Exception{
+        try{
+            System.out.println("Selecciona la cuota que desee modificar: ");
+            getCuotas().listar();
+            Scanner sc=new Scanner(System.in);
+            Cuota cuota=getCuotas().buscarPorId(sc.nextInt());
+            System.out.println("Seguro desdea modificar esta cuota?(si/no)\n"+cuota);
+            sc.nextLine();
+            if(sc.nextLine().equals("si")){                             
+                System.out.println("Agregar observaciones: ");               
+                cuota.setObservaciones(sc.nextLine());             
+                System.out.println("Valor de la cuota:");
+                cuota.setValor(sc.nextDouble());
+                System.out.println("La cuenta se encuentra paga? (si/no)");
+                sc.nextLine();
+                String pagado=sc.nextLine();
+                if(pagado.equals("si")){
+                cuota.setPagado(true);
+                }else{
+                    cuota.setPagado(false);
+                }
+            }
+        }catch(Exception e){
+            throw e;
+        }
     }
+
+   
     
     
     

@@ -18,7 +18,7 @@ public class Cuota implements IIdentificables, Serializable {
     private int numero;
     private double valor;
     private boolean pagado;
-    private List<String> observaciones;
+    private String observaciones;
 
     public Cuota(int numero, double valor) {
         this.setId();
@@ -56,11 +56,11 @@ public class Cuota implements IIdentificables, Serializable {
         this.pagado = pagado;
     }
 
-    public List<String> getObservaciones() {
+    public String getObservaciones() {
         return observaciones;
     }
 
-    public void setObservaciones(List<String> observaciones) {
+    public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
     

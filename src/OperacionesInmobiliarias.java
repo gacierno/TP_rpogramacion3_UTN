@@ -67,7 +67,13 @@ public class OperacionesInmobiliarias {
                     inmobiliaria.bajaCliente();
                     break;
                 case 4:
-                    System.out.println("FALTA MODIFICAR");
+                    try{
+                    this.inmobiliaria.listarClientes();
+                    System.out.println("Seleccione el id del cliente que quiere modificar");                    
+                    this.inmobiliaria.modificarCliente(sc.nextInt());
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 5:
                     System.out.println(inmobiliaria.buscarCliente());
@@ -109,7 +115,13 @@ public class OperacionesInmobiliarias {
                     inmobiliaria.bajaInmueble();
                     break;
                 case 4:
-                    System.out.println("FALTA MODIFICAR");
+                      try{
+                    this.inmobiliaria.listarInmuebles();
+                    System.out.println("Seleccione el id del inmueble que quiere modificar");                    
+                    this.inmobiliaria.modificarInmueble(sc.nextInt());
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
                 case 5:
                     System.out.println(inmobiliaria.buscarInmueble());
@@ -137,7 +149,7 @@ public class OperacionesInmobiliarias {
         while(check==false){
             System.out.println("Operaciones\n\n");
 
-            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Operacion\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Exit");
+            System.out.println("1-Ver Listado de Operaciones\n2-Alta Operacion\n3-Baja Operacion\n4-Modificar Cuota de alquiler\n5-Buscar Operacion\n6-Ver Morosos del mes\n7-Pagar Alquiler de este mes\n8-Pagar alquiler\n9-Exit");
 
             int opcion=sc.nextInt();
             switch(opcion){
@@ -159,7 +171,12 @@ public class OperacionesInmobiliarias {
                     inmobiliaria.bajaOperacion();
                     break;
                 case 4:
-                    System.out.println("FALTA MODIFICAR");
+                    try{
+                     this.inmobiliaria.modificarCuotaDeAlquiler();
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
+                        
                     break;
                 case 5:
 

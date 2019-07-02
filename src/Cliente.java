@@ -12,6 +12,10 @@ public class Cliente implements IIdentificables, Serializable {
     private String email;
     private String observacion;
 
+    
+    public Cliente(){
+        this.setId();
+    }
     public Cliente(String sexo, String dni,String nombre, String apellido, Domicilio domicilio, String telefono, String email, String observacion) {
         this.setId();
         this.setSexo(sexo);

@@ -11,6 +11,9 @@
 public class Departamento extends Inmueble{
     private String Cochera;
 
+    public Departamento(){
+        
+    }
     public Departamento(String Cochera, Domicilio domicilio, String descripcion, NomenclaturaCatastral nomCatastral) {
         super(domicilio, descripcion, nomCatastral);
         this.Cochera = Cochera;

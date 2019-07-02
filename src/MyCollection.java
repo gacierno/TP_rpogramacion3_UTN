@@ -57,6 +57,7 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
     }
 
     public T buscarPorId(int id){
+        try{
         T result = null;
 
         for( T l : list ){
@@ -65,6 +66,9 @@ public class MyCollection<T extends IIdentificables> implements Serializable {
             }
         }
         return result;
+        }catch (Exception e){            
+            throw e;
+        }
     }
 
     public void modificar(T Object, int id){
