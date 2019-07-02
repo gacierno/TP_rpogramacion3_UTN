@@ -46,7 +46,7 @@ public class ServiceLoadFile<T extends IIdentificables >{
                 do {
                     item = (T)oi.readObject();
                     dataOut.alta( item );
-                }while( item != null);
+                }while( item != null );
 
                 oi.close();
 

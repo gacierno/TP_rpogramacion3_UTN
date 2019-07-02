@@ -29,12 +29,37 @@ public class Inmobiliaria{
 
             ServiceLoadFile<Inmueble> _inmuebles = new ServiceLoadFile<>( "inmuebles.dat" );
             this.inmuebles = _inmuebles.getData();
+            for( int i = 0; i < inmuebles.size(); i++){
+                Inmueble syncIds = new Lote( inmuebles.get(i).getDomicilio(), inmuebles.get(i).getDescripcion(), inmuebles.get(i).getNomCatastral() );
+            }
 
             ServiceLoadFile<Cliente> _clientes = new ServiceLoadFile<>( "clientes.dat" );
             this.clientes = _clientes.getData();
+            for( int i = 0; i < clientes.size(); i++){
+                Cliente syncIds = new Locador(
+                        clientes.get(i).getSexo(),
+                        clientes.get(i).getDni(),
+                        clientes.get(i).getNombre(),
+                        clientes.get(i).getApellido(),
+                        clientes.get(i).getDomicilio(),
+                        clientes.get(i).getTelefono(),
+                        clientes.get(i).getEmail(),
+                        clientes.get(i).getObservacion()
+                );
+            }
 
             ServiceLoadFile<Operacion> _operaciones = new ServiceLoadFile<>( "operaciones.dat" );
             this.operaciones= _operaciones.getData();
+            for( int i = 0; i < operaciones.size(); i++){
+                Alquiler syncIds = new Alquiler(
+                        ((Alquiler)operaciones.get(i)).getTipoAumento(),
+                        ((Alquiler)operaciones.get(i)).getPorcentajeAumento(),
+                        ((Alquiler)operaciones.get(i)).getDuracion(),
+                        ((Alquiler)operaciones.get(i)).getFechaInicio(),
+                        ((Alquiler)operaciones.get(i)).getValorInicial(),
+                        ((Alquiler)operaciones.get(i)).getInmueble()
+                );
+            }
 
         }catch ( Exception e ){
             throw e;

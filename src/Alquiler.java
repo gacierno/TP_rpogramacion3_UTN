@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class Alquiler extends Operacion implements IIdentificables {
     private int id;
-    private int contId;
+    private int contId = 1;
     private MyCollection<Locador> locadores;
     private MyCollection<Locatario> locatarios;
     private MyCollection<Garante> garantes;
