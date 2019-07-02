@@ -1,6 +1,10 @@
 # TP_rpogramacion3_UTN
 UTN Trabajo Practico Final Programacion 3
 
+## Integrantes
+- Acierno, German Eliseo
+- Pafundi, Nicolas
+  
 ## Sistema de administracion de alquileres
 
 Este es un proyecto en java que permite administrar operaciones inmobiliarias   
