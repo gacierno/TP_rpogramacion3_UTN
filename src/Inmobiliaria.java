@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -27,17 +28,41 @@ public class Inmobiliaria{
 
         try {
 
-            ServiceLoadFile<Inmueble> _inmuebles = new ServiceLoadFile<>( "inmuebles.dat" );
-            this.inmuebles = _inmuebles.getData();
-
             ServiceLoadFile<Cliente> _clientes = new ServiceLoadFile<>( "clientes.dat" );
             this.clientes = _clientes.getData();
+            for( int i = 0; i < clientes.size(); i++){
+                Cliente syncIds = new Locador(
+                        clientes.get(i).getSexo(),
+                        clientes.get(i).getDni(),
+                        clientes.get(i).getNombre(),
+                        clientes.get(i).getApellido(),
+                        clientes.get(i).getDomicilio(),
+                        clientes.get(i).getTelefono(),
+                        clientes.get(i).getEmail(),
+                        clientes.get(i).getObservacion()
+                );
+            }
 
             ServiceLoadFile<Operacion> _operaciones = new ServiceLoadFile<>( "operaciones.dat" );
             this.operaciones= _operaciones.getData();
+            for( int i = 0; i < operaciones.size(); i++){
+                Alquiler syncIds = new Alquiler(
+                        ((Alquiler)operaciones.get(i)).getTipoAumento(),
+                        ((Alquiler)operaciones.get(i)).getPorcentajeAumento(),
+                        ((Alquiler)operaciones.get(i)).getDuracion(),
+                        ((Alquiler)operaciones.get(i)).getFechaInicio(),
+                        ((Alquiler)operaciones.get(i)).getValorInicial(),
+                        ((Alquiler)operaciones.get(i)).getInmueble()
+                );
+            }
 
-        }catch ( Exception e ){
-            throw e;
+
+        }
+        catch ( IOException e ){
+            System.out.println(e);
+        }
+        catch ( Exception e ){
+            System.out.println(e);
         }
 
 
